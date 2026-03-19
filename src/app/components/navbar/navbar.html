@@ -1,6 +1,6 @@
 <nav class="navbar" [class.scrolled]="scrolled">
   <div class="navbar-inner">
-    <a href="#" class="logo">
+    <a routerLink="/" class="logo">
       <span class="logo-icon">
         <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
           <rect width="32" height="32" rx="8" fill="url(#logo-grad)"/>
@@ -18,7 +18,7 @@
 
     <div class="nav-links" [class.open]="mobileMenuOpen">
       <a href="#features" class="nav-link" (click)="closeMobileMenu()">Features</a>
-      <a href="#roadmap" class="nav-link" (click)="closeMobileMenu()">Roadmap</a>
+      <a routerLink="/roadmap" class="nav-link" (click)="closeMobileMenu()">Roadmap</a>
       <a href="#cta" class="nav-btn" (click)="closeMobileMenu()">Empezar</a>
     </div>
 

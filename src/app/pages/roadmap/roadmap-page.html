@@ -1,0 +1,76 @@
+<section class="roadmap-page">
+  <div class="container">
+    <!-- Page header -->
+    <div class="page-header reveal">
+      <a routerLink="/" class="back-link">
+        <i class="bi bi-arrow-left"></i>
+        Volver
+      </a>
+      <span class="section-tag">Roadmap</span>
+      <h1 class="page-title">Mapa de <span class="gradient-text">desarrollo</span></h1>
+      <p class="page-subtitle">Explora el progreso y los planes futuros de Clarity.</p>
+    </div>
+
+    <!-- Concept map -->
+    <div class="map reveal">
+      <!-- Root node -->
+      <div class="map-level root-level">
+        <div class="map-node root-node">
+          <div class="node-icon root-icon">
+            <i class="bi" [ngClass]="tree.icon"></i>
+          </div>
+          <span class="node-label">{{ tree.label }}</span>
+        </div>
+      </div>
+
+      <!-- Connector from root -->
+      <div class="connector-vertical"></div>
+      <div class="connector-horizontal"></div>
+
+      <!-- Branch level -->
+      <div class="map-level branch-level">
+        @for (branch of tree.children; track branch.id) {
+          <div class="branch-column" [class.implemented]="branch.id === 'implemented'" [class.planned]="branch.id === 'planned'">
+            <!-- Connector up to horizontal line -->
+            <div class="connector-branch-up"></div>
+
+            <!-- Branch node -->
+            <div class="map-node branch-node">
+              <div class="node-icon branch-icon">
+                <i class="bi" [ngClass]="branch.icon"></i>
+              </div>
+              <span class="node-label">{{ branch.label }}</span>
+            </div>
+
+            <!-- Connector down to children -->
+            <div class="connector-branch-down"></div>
+
+            <!-- Leaf nodes -->
+            <div class="leaf-list">
+              @for (leaf of branch.children; track leaf.id; let i = $index) {
+                <!-- Connector to each leaf -->
+                <div class="leaf-item reveal reveal-stagger" [style.transition-delay.ms]="i * 100">
+                  <div class="connector-leaf"></div>
+                  <div class="map-node leaf-node">
+                    <div class="node-icon leaf-icon">
+                      <i class="bi" [ngClass]="leaf.icon"></i>
+                    </div>
+                    <div class="leaf-content">
+                      <span class="node-label">{{ leaf.label }}</span>
+                      @if (leaf.description) {
+                        <p class="leaf-desc">{{ leaf.description }}</p>
+                      }
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Background decoration -->
+  <div class="page-bg-glow"></div>
+</section>
