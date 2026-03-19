@@ -1,0 +1,22 @@
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Features</span>
+      <h2 class="section-title">Todo lo que necesitas para<br><span class="gradient-text">operar con disciplina</span></h2>
+      <p class="section-subtitle">Herramientas diseñadas específicamente para traders que quieren eliminar distracciones y operar con un plan.</p>
+    </div>
+
+    <div class="features-grid">
+      @for (feature of features; track feature.title) {
+        <div class="feature-card reveal reveal-stagger">
+          <div class="feature-icon" [style.--feature-color]="feature.color">
+            <i class="bi" [class]="feature.icon"></i>
+          </div>
+          <h3 class="feature-title">{{ feature.title }}</h3>
+          <p class="feature-desc">{{ feature.description }}</p>
+          <div class="feature-glow" [style.--feature-color]="feature.color"></div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

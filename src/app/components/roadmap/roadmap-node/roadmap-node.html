@@ -1,0 +1,51 @@
+<div
+  class="node"
+  [class.expanded]="expanded"
+  [class.implemented]="feature.status === 'implemented'"
+  [class.planned]="feature.status === 'planned'"
+  [style.--node-color]="categoryMeta.color"
+  [style.--node-glow]="categoryMeta.glowColor"
+  (click)="onToggle()"
+  role="button"
+  [attr.aria-expanded]="expanded"
+  tabindex="0"
+  (keydown.enter)="onToggle()"
+  (keydown.space)="onToggle(); $event.preventDefault()"
+>
+  <!-- Status indicator line -->
+  <div class="node-status-line"></div>
+
+  <div class="node-header">
+    <div class="node-icon">
+      <i class="bi" [class]="feature.icon"></i>
+    </div>
+
+    <div class="node-info">
+      <div class="node-meta">
+        <span class="node-category">
+          <i class="bi" [class]="categoryMeta.icon"></i>
+          {{ categoryMeta.label }}
+        </span>
+        <span class="node-status-badge" [class]="feature.status">
+          {{ feature.status === 'implemented' ? 'Live' : 'Planned' }}
+        </span>
+      </div>
+      <h4 class="node-title">{{ feature.title }}</h4>
+      <p class="node-desc">{{ feature.description }}</p>
+    </div>
+
+    <div class="node-expand-icon">
+      <i class="bi" [class]="expanded ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+    </div>
+  </div>
+
+  @if (expanded) {
+    <div class="node-detail" @expandDetail>
+      <div class="detail-divider"></div>
+      <p class="detail-text">{{ feature.detail }}</p>
+    </div>
+  }
+
+  <!-- Hover glow -->
+  <div class="node-glow"></div>
+</div>

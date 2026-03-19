@@ -1,0 +1,76 @@
+<section class="roadmap" id="roadmap">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Roadmap</span>
+      <h2 class="section-title">Explora lo que Clarity<br><span class="gradient-text">puede hacer por ti</span></h2>
+      <p class="section-subtitle">Un mapa interactivo de todas las funcionalidades. Haz clic, explora y descubre.</p>
+    </div>
+
+    <!-- Tab switcher -->
+    <div class="tabs reveal">
+      <button
+        class="tab"
+        [class.active]="activeTab === 'implemented'"
+        (click)="setTab('implemented')"
+      >
+        <span class="tab-dot implemented"></span>
+        <span>Implementado</span>
+        <span class="tab-count">{{ implementedCount }}</span>
+      </button>
+      <button
+        class="tab"
+        [class.active]="activeTab === 'planned'"
+        (click)="setTab('planned')"
+      >
+        <span class="tab-dot planned"></span>
+        <span>Por implementar</span>
+        <span class="tab-count">{{ plannedCount }}</span>
+      </button>
+      <div class="tab-indicator" [class.right]="activeTab === 'planned'"></div>
+    </div>
+
+    <!-- Category filters -->
+    <div class="category-filters reveal">
+      <button
+        class="cat-filter"
+        [class.active]="activeCategory === 'all'"
+        (click)="setCategory('all')"
+      >
+        Todas
+      </button>
+      @for (cat of visibleCategories; track cat.id) {
+        <button
+          class="cat-filter"
+          [class.active]="activeCategory === cat.id"
+          [style.--cat-color]="cat.color"
+          (click)="setCategory(cat.id)"
+        >
+          <i class="bi" [class]="cat.icon"></i>
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Features graph -->
+    <div class="roadmap-graph" @listAnimation>
+      @for (feature of filteredFeatures; track trackById($index, feature)) {
+        <app-roadmap-node
+          [feature]="feature"
+          [categoryMeta]="getCategoryMeta(feature.category)"
+          [expanded]="expandedFeature === feature.id"
+          (toggle)="toggleFeature(feature.id)"
+        ></app-roadmap-node>
+      }
+    </div>
+
+    @if (filteredFeatures.length === 0) {
+      <div class="empty-state" @fadeSlide>
+        <i class="bi bi-inbox"></i>
+        <p>No hay features en esta categoría</p>
+      </div>
+    }
+  </div>
+
+  <!-- Background decoration -->
+  <div class="roadmap-bg-glow"></div>
+</section>
