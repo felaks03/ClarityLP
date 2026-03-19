@@ -84,18 +84,39 @@
   display: inline-flex;
   align-items: center;
   padding: 8px 20px;
-  background: var(--gradient-accent);
+  background: var(--accent);
   color: #fff;
   border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
 
   &:hover {
     transform: translateY(-1px);
-    box-shadow: var(--glow-accent);
+    background: var(--accent-hover);
     color: #fff;
+  }
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: 1rem;
+
+  &:hover {
+    color: var(--text-primary);
+    border-color: var(--border-light);
+    background: var(--bg-hover);
   }
 }
 

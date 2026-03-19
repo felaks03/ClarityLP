@@ -1,76 +1,175 @@
-<section class="roadmap-page">
-  <div class="container">
-    <!-- Page header -->
-    <div class="page-header reveal">
-      <a routerLink="/" class="back-link">
-        <i class="bi bi-arrow-left"></i>
-        Volver
-      </a>
-      <span class="section-tag">Roadmap</span>
-      <h1 class="page-title">Mapa de <span class="gradient-text">desarrollo</span></h1>
-      <p class="page-subtitle">Explora el progreso y los planes futuros de Clarity.</p>
+<div class="roadmap-page">
+
+  <!-- ═══ Hero header ═══ -->
+  <header class="hero reveal-el" #revealEl>
+    <a routerLink="/" class="back-link">
+      <i class="bi bi-arrow-left"></i>
+      <span>Volver</span>
+    </a>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="bi bi-map-fill"></i>
+        <span>Roadmap</span>
+      </div>
+      <h1 class="hero-title">Construyendo el futuro<br/>del trading con disciplina</h1>
+      <p class="hero-subtitle">
+        Cada funcionalidad de Clarity está diseñada con un objetivo:
+        eliminar distracciones y maximizar tu rendimiento.
+      </p>
     </div>
 
-    <!-- Concept map -->
-    <div class="map reveal">
-      <!-- Root node -->
-      <div class="map-level root-level">
-        <div class="map-node root-node">
-          <div class="node-icon root-icon">
-            <i class="bi" [ngClass]="tree.icon"></i>
-          </div>
-          <span class="node-label">{{ tree.label }}</span>
+    <!-- Progress bar -->
+    <div class="progress-section">
+      <div class="progress-header">
+        <span class="progress-label">Progreso del Roadmap</span>
+        <span class="progress-pct">{{ progressPercent }}%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" [style.width.%]="progressPercent"></div>
+      </div>
+      <div class="progress-stats">
+        <div class="pstat implemented">
+          <i class="bi bi-check-circle-fill"></i>
+          <span><strong>{{ implementedCount }}</strong> implementadas</span>
+        </div>
+        <div class="pstat planned">
+          <i class="bi bi-clock-fill"></i>
+          <span><strong>{{ plannedCount }}</strong> por venir</span>
+        </div>
+        <div class="pstat total">
+          <i class="bi bi-collection-fill"></i>
+          <span><strong>{{ totalCount }}</strong> total</span>
         </div>
       </div>
+    </div>
 
-      <!-- Connector from root -->
-      <div class="connector-vertical"></div>
-      <div class="connector-horizontal"></div>
+    <!-- Filters -->
+    <div class="filters">
+      <button
+        class="filter-btn"
+        [class.active]="activeFilter === 'all'"
+        (click)="setFilter('all')"
+      >
+        Todo
+      </button>
+      <button
+        class="filter-btn filter-impl"
+        [class.active]="activeFilter === 'implemented'"
+        (click)="setFilter('implemented')"
+      >
+        <i class="bi bi-check-circle-fill"></i>
+        Implementado
+      </button>
+      <button
+        class="filter-btn filter-plan"
+        [class.active]="activeFilter === 'planned'"
+        (click)="setFilter('planned')"
+      >
+        <i class="bi bi-clock-fill"></i>
+        Por implementar
+      </button>
+    </div>
+  </header>
 
-      <!-- Branch level -->
-      <div class="map-level branch-level">
-        @for (branch of tree.children; track branch.id) {
-          <div class="branch-column" [class.implemented]="branch.id === 'implemented'" [class.planned]="branch.id === 'planned'">
-            <!-- Connector up to horizontal line -->
-            <div class="connector-branch-up"></div>
+  <!-- ═══ Timeline ═══ -->
+  <div class="timeline">
+    @for (section of filteredSections; track section.id) {
+      <!-- Section divider -->
+      <div class="section-divider reveal-el" #revealEl>
+        <div class="divider-dot" [ngClass]="'dot-' + section.status">
+          <i class="bi" [ngClass]="section.icon"></i>
+        </div>
+        <div class="divider-text">
+          <h2>{{ section.title }}</h2>
+          <p>{{ section.subtitle }}</p>
+        </div>
+        <div class="divider-line"></div>
+      </div>
 
-            <!-- Branch node -->
-            <div class="map-node branch-node">
-              <div class="node-icon branch-icon">
-                <i class="bi" [ngClass]="branch.icon"></i>
+      <!-- Categories -->
+      @for (cat of section.categories; track cat.label; let ci = $index) {
+        <div class="timeline-block reveal-el" #revealEl [style.--delay]="ci * 80 + 'ms'">
+          <!-- Timeline connector -->
+          <div class="connector">
+            <div class="connector-line" [ngClass]="'line-' + section.status"></div>
+            <div class="connector-dot" [ngClass]="'cdot-' + section.status">
+              <i class="bi" [ngClass]="cat.icon"></i>
+            </div>
+            <div class="connector-line" [ngClass]="'line-' + section.status"></div>
+          </div>
+
+          <!-- Category card -->
+          <div class="category-card" [ngClass]="'cat-' + section.status">
+            <div class="cat-header">
+              <div class="cat-info">
+                <div class="cat-title-row">
+                  <h3>{{ cat.label }}</h3>
+                  <span class="cat-tag" [ngClass]="'tag-' + section.status">{{ cat.tag }}</span>
+                  <span class="cat-count">{{ cat.features.length }} features</span>
+                </div>
+                <p class="cat-desc">{{ cat.description }}</p>
               </div>
-              <span class="node-label">{{ branch.label }}</span>
             </div>
 
-            <!-- Connector down to children -->
-            <div class="connector-branch-down"></div>
-
-            <!-- Leaf nodes -->
-            <div class="leaf-list">
-              @for (leaf of branch.children; track leaf.id; let i = $index) {
-                <!-- Connector to each leaf -->
-                <div class="leaf-item reveal reveal-stagger" [style.transition-delay.ms]="i * 100">
-                  <div class="connector-leaf"></div>
-                  <div class="map-node leaf-node">
-                    <div class="node-icon leaf-icon">
-                      <i class="bi" [ngClass]="leaf.icon"></i>
+            <!-- Features -->
+            <div class="features-list">
+              @for (feat of cat.features; track feat.label; let fi = $index) {
+                <div
+                  class="feature"
+                  [ngClass]="'feat-' + section.status"
+                  [class.expanded]="expandedFeature === featureId(section.id, ci, fi)"
+                  (click)="toggleFeature(featureId(section.id, ci, fi))"
+                  role="button"
+                  tabindex="0"
+                  (keydown.enter)="toggleFeature(featureId(section.id, ci, fi))"
+                >
+                  <!-- Feature main row -->
+                  <div class="feat-row">
+                    <div class="feat-icon" [ngClass]="'fi-' + section.status">
+                      <i class="bi" [ngClass]="feat.icon"></i>
                     </div>
-                    <div class="leaf-content">
-                      <span class="node-label">{{ leaf.label }}</span>
-                      @if (leaf.description) {
-                        <p class="leaf-desc">{{ leaf.description }}</p>
+                    <div class="feat-body">
+                      <div class="feat-title-row">
+                        <span class="feat-label">{{ feat.label }}</span>
+                        @if (feat.version) {
+                          <span class="feat-version">{{ feat.version }}</span>
+                        }
+                      </div>
+                      <p class="feat-desc">{{ feat.description }}</p>
+                    </div>
+                    <i class="bi feat-chevron" [ngClass]="expandedFeature === featureId(section.id, ci, fi) ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                  </div>
+
+                  <!-- Expandable detail -->
+                  @if (expandedFeature === featureId(section.id, ci, fi)) {
+                    <div class="feat-detail">
+                      <div class="detail-divider"></div>
+                      <p class="detail-text">{{ feat.detail }}</p>
+                      @if (feat.techs && feat.techs.length > 0) {
+                        <div class="detail-techs">
+                          <span class="techs-label">Stack:</span>
+                          @for (tech of feat.techs; track tech) {
+                            <span class="tech-pill">{{ tech }}</span>
+                          }
+                        </div>
                       }
                     </div>
-                  </div>
+                  }
                 </div>
               }
             </div>
           </div>
-        }
+        </div>
+      }
+    }
+
+    <!-- Timeline end marker -->
+    <div class="timeline-end reveal-el" #revealEl>
+      <div class="end-dot">
+        <i class="bi bi-three-dots"></i>
       </div>
+      <p>Más funcionalidades por llegar</p>
     </div>
   </div>
-
-  <!-- Background decoration -->
-  <div class="page-bg-glow"></div>
-</section>
+</div>

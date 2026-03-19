@@ -1,6 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+type Theme = 'dark' | 'light';
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -11,10 +13,27 @@ import { RouterLink } from '@angular/router';
 export class NavbarComponent {
   scrolled = false;
   mobileMenuOpen = false;
+  theme: Theme = 'dark';
+
+  constructor() {
+    const stored = localStorage.getItem('clarity-theme');
+    this.theme = stored === 'light' ? 'light' : 'dark';
+    this.applyTheme(this.theme);
+  }
 
   @HostListener('window:scroll')
   onScroll() {
     this.scrolled = window.scrollY > 20;
+  }
+
+  toggleTheme() {
+    this.theme = this.theme === 'dark' ? 'light' : 'dark';
+    this.applyTheme(this.theme);
+    localStorage.setItem('clarity-theme', this.theme);
+  }
+
+  private applyTheme(theme: Theme) {
+    document.documentElement.setAttribute('data-theme', theme);
   }
 
   toggleMobileMenu() {
