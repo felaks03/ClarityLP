@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ScrollService } from '../../services/scroll.service';
 
 @Component({
   selector: 'app-cta',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './cta.html',
   styleUrl: './cta.scss',
 })
-export class CtaComponent {}
+export class CtaComponent {
+  constructor(private scrollService: ScrollService) {}
+
+  goToRoadmap() {
+    this.scrollService.navigateAndScroll('/roadmap');
+  }
+}

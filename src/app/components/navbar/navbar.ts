@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ScrollService } from '../../services/scroll.service';
 
 type Theme = 'dark' | 'light';
 
@@ -15,7 +16,7 @@ export class NavbarComponent {
   mobileMenuOpen = false;
   theme: Theme = 'dark';
 
-  constructor() {
+  constructor(private scrollService: ScrollService) {
     const stored = localStorage.getItem('clarity-theme');
     this.theme = stored === 'light' ? 'light' : 'dark';
     this.applyTheme(this.theme);
@@ -42,5 +43,10 @@ export class NavbarComponent {
 
   closeMobileMenu() {
     this.mobileMenuOpen = false;
+  }
+
+  goToFeatures() {
+    this.closeMobileMenu();
+    this.scrollService.navigateAndScroll('/', 'features');
   }
 }

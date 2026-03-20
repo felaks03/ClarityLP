@@ -1,73 +1,95 @@
 <section class="features" id="features">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-tag">Implementado</span>
+      <span class="section-tag">Funcionalidades</span>
       <h2 class="section-title">Todo lo que ya tienes<br><span class="gradient-text">listo para usar</span></h2>
       <p class="section-subtitle">
-        Estas son las funcionalidades que ya están implementadas en Clarity.
-        Haz clic en cualquier tarjeta para desplegar la documentación completa.
+        Cuatro pilares diseñados para transformar tu disciplina de trading.
       </p>
     </div>
 
-    <div class="features-grid">
-      @for (feature of features; track feature.title) {
-        <div
-          class="feature-card reveal reveal-stagger"
-          [class.is-expanded]="feature.expanded"
-          (click)="toggleFeature(feature)"
-        >
-          <!-- Collapsed/Header Area -->
-          <div class="feature-header">
-            <div class="feature-icon" [style.--feature-color]="feature.color">
-              <i class="bi" [class]="feature.icon"></i>
-            </div>
-            <div class="feature-header-text">
-              <h3 class="feature-title">{{ feature.title }}</h3>
-              <span class="feature-subtitle">{{ feature.subtitle }}</span>
-            </div>
-            <div class="feature-chevron" [style.--feature-color]="feature.color">
-              <i class="bi bi-chevron-down" [@rotateChevron]="feature.expanded ? 'expanded' : 'collapsed'"></i>
-            </div>
-          </div>
-
-          <div class="feature-icon-label">
-            <i class="bi bi-info-circle"></i>
-            <span>{{ feature.iconLabel }}</span>
-          </div>
-
-          <p class="feature-desc">{{ feature.description }}</p>
-
-          <!-- Expandable Content -->
-          @if (feature.expanded) {
-            <div class="feature-details" @expandContent>
-              <div class="feature-details-divider" [style.--feature-color]="feature.color"></div>
-              <div class="feature-details-inner" @detailStagger>
-                @for (detail of feature.details; track detail.title; let i = $index) {
-                  <div class="detail-item">
-                    <div class="detail-icon" [style.--feature-color]="feature.color">
-                      <i class="bi" [class]="detail.icon"></i>
-                    </div>
-                    <div class="detail-content">
-                      <h4 class="detail-title">{{ detail.title }}</h4>
-                      <p class="detail-text">{{ detail.text }}</p>
-                    </div>
-                  </div>
+    <!-- ─── 3D Carousel ─── -->
+    <div class="carousel reveal">
+      <div class="carousel-scene">
+        @for (f of features; track f.id; let i = $index) {
+          <div
+            class="carousel-card"
+            [class.is-active]="offset(i) === 0"
+            [style.--f-color]="f.color"
+            [style.--f-glow]="f.glow"
+            [style.transform]="cardTransform(i)"
+            [style.opacity]="cardOpacity(i)"
+            [style.z-index]="cardZIndex(i)"
+            [style.pointer-events]="absOffset(i) <= 1 ? 'auto' : 'none'"
+            [style.filter]="offset(i) !== 0 ? 'brightness(0.55) saturate(0.6)' : 'none'"
+            (click)="select(i)"
+          >
+            <div class="card-glow"></div>
+            <div class="card-inner">
+              <div class="card-icon-area">
+                <div class="card-icon">
+                  <i class="bi" [class]="f.icon"></i>
+                </div>
+                <div class="card-icon-ring"></div>
+              </div>
+              <span class="card-badge">{{ f.label }}</span>
+              <h3 class="card-title">{{ f.title }}</h3>
+              <p class="card-desc">{{ f.description }}</p>
+              <div class="card-pills">
+                @for (h of f.highlights; track h) {
+                  <span class="pill">{{ h }}</span>
                 }
               </div>
             </div>
-          }
+          </div>
+        }
 
-          <!-- Expand Hint (only when collapsed) -->
-          @if (!feature.expanded) {
-            <div class="feature-expand-hint">
-              <span>Ver documentación completa</span>
-              <i class="bi bi-chevron-down"></i>
-            </div>
-          }
+        <button class="carousel-arrow arrow-prev" (click)="prev(); $event.stopPropagation()" aria-label="Anterior">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="carousel-arrow arrow-next" (click)="next(); $event.stopPropagation()" aria-label="Siguiente">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
 
-          <div class="feature-glow" [style.--feature-color]="feature.color"></div>
+      <div class="carousel-dots">
+        @for (f of features; track f.id; let i = $index) {
+          <button
+            class="dot"
+            [class.active]="activeIndex === i"
+            [style.--f-color]="f.color"
+            (click)="select(i)"
+            [attr.aria-label]="'Feature ' + (i + 1)"
+          ></button>
+        }
+      </div>
+    </div>
+
+    <!-- ─── Active Feature Details ─── -->
+    <div class="details-panel reveal" [style.--f-color]="active.color" [style.--f-glow]="active.glow">
+      <div class="details-header">
+        <div class="details-icon">
+          <i class="bi" [class]="active.icon"></i>
         </div>
-      }
+        <h3 class="details-title">{{ active.title }}</h3>
+        <span class="details-badge">{{ active.label }}</span>
+      </div>
+      <div class="details-grid" [@detailFade]="activeIndex">
+        @for (d of active.details; track d.title; let j = $index) {
+          <div class="detail" [style.--i]="j">
+            <div class="detail-num">{{ '0' + (j + 1) }}</div>
+            <div class="detail-body">
+              <div class="detail-head">
+                <div class="detail-icon">
+                  <i class="bi" [class]="d.icon"></i>
+                </div>
+                <h4>{{ d.title }}</h4>
+              </div>
+              <p>{{ d.text }}</p>
+            </div>
+          </div>
+        }
+      </div>
     </div>
   </div>
 </section>

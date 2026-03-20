@@ -58,6 +58,10 @@
   font-weight: 500;
   transition: color var(--transition-fast);
   position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
 
   &::after {
     content: '';

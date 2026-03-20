@@ -64,10 +64,12 @@
   padding: 14px 28px;
   background: var(--gradient-accent);
   color: #fff;
+  border: none;
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 
   &:hover {
@@ -83,11 +85,13 @@
   gap: 8px;
   padding: 14px 24px;
   background: transparent;
+  border: none;
   color: var(--text-muted);
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
+  cursor: pointer;
   transition: all var(--transition-fast);
 
   &:hover {

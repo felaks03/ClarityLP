@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ScrollService } from '../../services/scroll.service';
 
 @Component({
   selector: 'app-hero',
@@ -6,4 +7,14 @@ import { Component } from '@angular/core';
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
 })
-export class HeroComponent {}
+export class HeroComponent {
+  constructor(private scrollService: ScrollService) {}
+
+  goToRoadmap() {
+    this.scrollService.navigateAndScroll('/roadmap');
+  }
+
+  goToFeatures() {
+    this.scrollService.navigateAndScroll('/', 'features');
+  }
+}

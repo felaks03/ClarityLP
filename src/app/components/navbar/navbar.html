@@ -17,7 +17,7 @@
     </a>
 
     <div class="nav-links" [class.open]="mobileMenuOpen">
-      <a href="#features" class="nav-link" (click)="closeMobileMenu()">Features</a>
+      <button (click)="goToFeatures()" class="nav-link">Features</button>
       <a routerLink="/roadmap" class="nav-link" (click)="closeMobileMenu()">Roadmap</a>
       <button class="theme-toggle-btn" (click)="toggleTheme()" [attr.aria-label]="theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'">
         <i class="bi" [class.bi-moon-fill]="theme === 'dark'" [class.bi-sun-fill]="theme === 'light'"></i>
