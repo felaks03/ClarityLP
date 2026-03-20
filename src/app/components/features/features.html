@@ -64,32 +64,5 @@
         }
       </div>
     </div>
-
-    <!-- ─── Active Feature Details ─── -->
-    <div class="details-panel reveal" [style.--f-color]="active.color" [style.--f-glow]="active.glow">
-      <div class="details-header">
-        <div class="details-icon">
-          <i class="bi" [class]="active.icon"></i>
-        </div>
-        <h3 class="details-title">{{ active.title }}</h3>
-        <span class="details-badge">{{ active.label }}</span>
-      </div>
-      <div class="details-grid" [@detailFade]="activeIndex">
-        @for (d of active.details; track d.title; let j = $index) {
-          <div class="detail" [style.--i]="j">
-            <div class="detail-num">{{ '0' + (j + 1) }}</div>
-            <div class="detail-body">
-              <div class="detail-head">
-                <div class="detail-icon">
-                  <i class="bi" [class]="d.icon"></i>
-                </div>
-                <h4>{{ d.title }}</h4>
-              </div>
-              <p>{{ d.text }}</p>
-            </div>
-          </div>
-        }
-      </div>
-    </div>
   </div>
 </section>
