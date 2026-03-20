@@ -1,19 +1,70 @@
 <section class="features" id="features">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-tag">Features</span>
-      <h2 class="section-title">Todo lo que necesitas para<br><span class="gradient-text">operar con disciplina</span></h2>
-      <p class="section-subtitle">Herramientas diseñadas específicamente para traders que quieren eliminar distracciones y operar con un plan.</p>
+      <span class="section-tag">Implementado</span>
+      <h2 class="section-title">Todo lo que ya tienes<br><span class="gradient-text">listo para usar</span></h2>
+      <p class="section-subtitle">
+        Estas son las funcionalidades que ya están implementadas en Clarity.
+        Haz clic en cualquier tarjeta para desplegar la documentación completa.
+      </p>
     </div>
 
     <div class="features-grid">
       @for (feature of features; track feature.title) {
-        <div class="feature-card reveal reveal-stagger">
-          <div class="feature-icon" [style.--feature-color]="feature.color">
-            <i class="bi" [class]="feature.icon"></i>
+        <div
+          class="feature-card reveal reveal-stagger"
+          [class.is-expanded]="feature.expanded"
+          (click)="toggleFeature(feature)"
+        >
+          <!-- Collapsed/Header Area -->
+          <div class="feature-header">
+            <div class="feature-icon" [style.--feature-color]="feature.color">
+              <i class="bi" [class]="feature.icon"></i>
+            </div>
+            <div class="feature-header-text">
+              <h3 class="feature-title">{{ feature.title }}</h3>
+              <span class="feature-subtitle">{{ feature.subtitle }}</span>
+            </div>
+            <div class="feature-chevron" [style.--feature-color]="feature.color">
+              <i class="bi bi-chevron-down" [@rotateChevron]="feature.expanded ? 'expanded' : 'collapsed'"></i>
+            </div>
           </div>
-          <h3 class="feature-title">{{ feature.title }}</h3>
+
+          <div class="feature-icon-label">
+            <i class="bi bi-info-circle"></i>
+            <span>{{ feature.iconLabel }}</span>
+          </div>
+
           <p class="feature-desc">{{ feature.description }}</p>
+
+          <!-- Expandable Content -->
+          @if (feature.expanded) {
+            <div class="feature-details" @expandContent>
+              <div class="feature-details-divider" [style.--feature-color]="feature.color"></div>
+              <div class="feature-details-inner" @detailStagger>
+                @for (detail of feature.details; track detail.title; let i = $index) {
+                  <div class="detail-item">
+                    <div class="detail-icon" [style.--feature-color]="feature.color">
+                      <i class="bi" [class]="detail.icon"></i>
+                    </div>
+                    <div class="detail-content">
+                      <h4 class="detail-title">{{ detail.title }}</h4>
+                      <p class="detail-text">{{ detail.text }}</p>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+
+          <!-- Expand Hint (only when collapsed) -->
+          @if (!feature.expanded) {
+            <div class="feature-expand-hint">
+              <span>Ver documentación completa</span>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+          }
+
           <div class="feature-glow" [style.--feature-color]="feature.color"></div>
         </div>
       }
