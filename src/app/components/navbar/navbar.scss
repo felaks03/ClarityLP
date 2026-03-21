@@ -28,7 +28,7 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
   color: var(--text-primary);
   text-decoration: none;
   font-weight: 700;
@@ -40,9 +40,11 @@
   }
 }
 
-.logo-icon {
-  display: flex;
-  align-items: center;
+.logo-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 .nav-links {

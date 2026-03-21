@@ -136,7 +136,6 @@
                           <span class="feat-version">{{ feat.version }}</span>
                         }
                       </div>
-                      <p class="feat-desc">{{ feat.description }}</p>
                     </div>
                     <i class="bi feat-chevron" [ngClass]="expandedFeature === featureId(section.id, ci, fi) ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                   </div>
@@ -145,7 +144,10 @@
                   @if (expandedFeature === featureId(section.id, ci, fi)) {
                     <div class="feat-detail">
                       <div class="detail-divider"></div>
-                      <p class="detail-text">{{ feat.detail }}</p>
+                      <p class="detail-text">{{ feat.description }}</p>
+                      @if (feat.detail) {
+                        <p class="detail-text">{{ feat.detail }}</p>
+                      }
                       @if (feat.techs && feat.techs.length > 0) {
                         <div class="detail-techs">
                           <span class="techs-label">Stack:</span>
