@@ -103,6 +103,19 @@
     background: var(--accent-hover);
     color: #fff;
   }
+
+  &.coming-soon {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    cursor: default;
+    border: 1px solid var(--border);
+
+    &:hover {
+      transform: none;
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+    }
+  }
 }
 
 .theme-toggle-btn {
