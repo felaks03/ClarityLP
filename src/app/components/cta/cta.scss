@@ -77,6 +77,19 @@
     box-shadow: var(--glow-accent);
     color: #fff;
   }
+
+  &.disabled {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    cursor: default;
+    border: 1px solid var(--border);
+    opacity: 0.8;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
 }
 
 .btn-ghost {

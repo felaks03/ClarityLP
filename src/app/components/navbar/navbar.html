@@ -10,7 +10,7 @@
       <button class="theme-toggle-btn" (click)="toggleTheme()" [attr.aria-label]="theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'">
         <i class="bi" [class.bi-moon-fill]="theme === 'dark'" [class.bi-sun-fill]="theme === 'light'"></i>
       </button>
-      <a href="#cta" class="nav-btn" (click)="closeMobileMenu()">Empezar</a>
+      <span class="nav-btn coming-soon">Coming Soon</span>
     </div>
 
     <button class="mobile-toggle" (click)="toggleMobileMenu()" [attr.aria-label]="mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'" aria-expanded="false">
