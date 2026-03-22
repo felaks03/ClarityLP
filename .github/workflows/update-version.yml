@@ -24,21 +24,24 @@ jobs:
           TAG="v${VERSION}"
           BASE="https://github.com/felaks03/Clarity/releases/download/${TAG}"
 
-          cat > public/version.json << EOF
-          {
-            "version": "${VERSION}",
-            "publishedAt": "${DATE}",
-            "assets": [
-              { "name": "Clarity Setup ${VERSION}.exe", "url": "${BASE}/Clarity%20Setup%20${VERSION}.exe", "sizeMB": 98 },
-              { "name": "Clarity-${VERSION}.dmg", "url": "${BASE}/Clarity-${VERSION}.dmg", "sizeMB": 115 },
-              { "name": "Clarity-${VERSION}-mac.zip", "url": "${BASE}/Clarity-${VERSION}-mac.zip", "sizeMB": 115 },
-              { "name": "clarity_${VERSION}_amd64.deb", "url": "${BASE}/clarity_${VERSION}_amd64.deb", "sizeMB": 93 },
-              { "name": "clarity-${VERSION}.x86_64.rpm", "url": "${BASE}/clarity-${VERSION}.x86_64.rpm", "sizeMB": 93 },
-              { "name": "clarity-${VERSION}.pacman", "url": "${BASE}/clarity-${VERSION}.pacman", "sizeMB": 93 },
-              { "name": "Clarity-${VERSION}.AppImage", "url": "${BASE}/Clarity-${VERSION}.AppImage", "sizeMB": 119 }
-            ]
-          }
-          EOF
+          export VERSION DATE BASE
+          node -e '
+            const v = process.env.VERSION, d = process.env.DATE, b = process.env.BASE;
+            const data = {
+              version: v,
+              publishedAt: d,
+              assets: [
+                { name: "Clarity Setup " + v + ".exe", url: b + "/Clarity%20Setup%20" + v + ".exe", sizeMB: 98 },
+                { name: "Clarity-" + v + ".dmg", url: b + "/Clarity-" + v + ".dmg", sizeMB: 115 },
+                { name: "Clarity-" + v + "-mac.zip", url: b + "/Clarity-" + v + "-mac.zip", sizeMB: 115 },
+                { name: "clarity_" + v + "_amd64.deb", url: b + "/clarity_" + v + "_amd64.deb", sizeMB: 93 },
+                { name: "clarity-" + v + ".x86_64.rpm", url: b + "/clarity-" + v + ".x86_64.rpm", sizeMB: 93 },
+                { name: "clarity-" + v + ".pacman", url: b + "/clarity-" + v + ".pacman", sizeMB: 93 },
+                { name: "Clarity-" + v + ".AppImage", url: b + "/Clarity-" + v + ".AppImage", sizeMB: 119 }
+              ]
+            };
+            require("fs").writeFileSync("public/version.json", JSON.stringify(data, null, 2) + "\n");
+          '
 
       - name: Update install.sh version
         run: |
