@@ -14,6 +14,11 @@ const routes: Routes = [
     loadComponent: () =>
       import('./pages/roadmap/roadmap-page').then((m) => m.RoadmapPage),
   },
+  {
+    path: 'riesgos',
+    loadComponent: () =>
+      import('./pages/riesgos/riesgos-page').then((m) => m.RiesgosPage),
+  },
 ];
 
 export const appConfig: ApplicationConfig = {
