@@ -1,0 +1,288 @@
+.downloads {
+  padding: var(--section-padding) 24px;
+  position: relative;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+// ─── Header ───
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  background: var(--accent-bg);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.gradient-text {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+// ─── Download Grid ───
+.downloads-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// ─── Download Card ───
+.download-card {
+  position: relative;
+  border-radius: 20px;
+
+  &.detected {
+    order: -1;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+.card-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 21px;
+  background: var(--gradient-accent);
+  opacity: 0.18;
+  filter: blur(1px);
+}
+
+.card-inner {
+  position: relative;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+
+  .detected & {
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  &:hover {
+    border-color: rgba(59, 130, 246, 0.2);
+    box-shadow: var(--shadow-card);
+  }
+}
+
+// ─── Card Header ───
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+
+  > .bi {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+  }
+}
+
+.detected-badge {
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--success);
+  background: var(--success-bg);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.alt-badge {
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+}
+
+// ─── Card Content ───
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+
+.card-file {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  margin-bottom: 2px;
+  word-break: break-all;
+}
+
+.card-size {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+// ─── Download Button ───
+.btn-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    background var(--transition-fast), border-color var(--transition-fast);
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-card);
+  }
+
+  &.btn-primary-dl {
+    background: var(--gradient-accent);
+    color: #fff;
+    border: none;
+
+    &:hover {
+      box-shadow: var(--glow-accent);
+      color: #fff;
+    }
+  }
+}
+
+// ─── Card Note ───
+.card-note {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+  margin-top: auto;
+
+  .bi {
+    margin-right: 3px;
+    font-size: 0.7rem;
+  }
+}
+
+// ─── Footer ───
+.downloads-footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.toggle-platforms {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-bottom: 20px;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+
+  .bi {
+    font-size: 0.75rem;
+    transition: transform var(--transition-fast);
+  }
+}
+
+.version-info {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.separator {
+  color: var(--border);
+}
+
+.releases-link {
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--accent-hover);
+  }
+
+  .bi {
+    font-size: 0.7rem;
+    margin-left: 2px;
+  }
+}
+
+// ─── Responsive ───
+@media (max-width: 768px) {
+  .downloads-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .card-inner {
+    padding: 24px 20px;
+  }
+}

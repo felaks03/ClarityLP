@@ -1,0 +1,55 @@
+<section class="downloads" id="downloads">
+  <div class="container reveal">
+    <div class="section-header">
+      <span class="section-tag">Downloads</span>
+      <h2 class="section-title">Descarga Clarity<br><span class="gradient-text">para tu plataforma.</span></h2>
+      <p class="section-subtitle">
+        Disponible para Windows, macOS y Linux. Gratis, sin registro, sin límites.
+      </p>
+    </div>
+
+    <div class="downloads-grid">
+      @for (dl of visibleDownloads; track dl.fileName) {
+        <div class="download-card" [class.detected]="isDetected(dl.platform)">
+          <div class="card-glow" *ngIf="isDetected(dl.platform)"></div>
+          <div class="card-inner">
+            <div class="card-header">
+              <i class="bi" [ngClass]="dl.icon"></i>
+              @if (isDetected(dl.platform) && dl.primary) {
+                <span class="detected-badge">Tu sistema</span>
+              }
+              @if (!dl.primary) {
+                <span class="alt-badge">Alternativa</span>
+              }
+            </div>
+            <h3 class="card-title">{{ dl.label }}</h3>
+            <p class="card-file">{{ dl.fileName }}</p>
+            <p class="card-size">{{ dl.size }}</p>
+            <a [href]="dl.url" class="btn-download" [class.btn-primary-dl]="isDetected(dl.platform) && dl.primary" download>
+              <i class="bi bi-download"></i>
+              {{ dl.label }}
+            </a>
+            <p class="card-note"><i class="bi bi-info-circle"></i> {{ dl.note }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="downloads-footer">
+      <button class="toggle-platforms" (click)="toggleShowAll()" [attr.aria-expanded]="showAll">
+        <i class="bi" [ngClass]="showAll ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+        {{ showAll ? 'Mostrar solo mi sistema' : 'Ver otros sistemas' }}
+      </button>
+
+      <div class="version-info">
+        <span>v{{ version }}</span>
+        <span class="separator">·</span>
+        <span>Actualizado {{ lastUpdated }}</span>
+        <span class="separator">·</span>
+        <a [href]="releasesUrl" target="_blank" rel="noopener noreferrer" class="releases-link">
+          GitHub Releases <i class="bi bi-box-arrow-up-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

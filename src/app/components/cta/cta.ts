@@ -13,4 +13,8 @@ export class CtaComponent {
   goToRoadmap() {
     this.scrollService.navigateAndScroll('/roadmap');
   }
+
+  goToDownloads() {
+    this.scrollService.navigateAndScroll('/', 'downloads');
+  }
 }

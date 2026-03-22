@@ -49,4 +49,9 @@ export class NavbarComponent {
     this.closeMobileMenu();
     this.scrollService.navigateAndScroll('/', 'features');
   }
+
+  goToDownloads() {
+    this.closeMobileMenu();
+    this.scrollService.navigateAndScroll('/', 'downloads');
+  }
 }
