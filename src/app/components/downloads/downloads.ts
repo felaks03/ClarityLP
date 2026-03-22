@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GithubReleaseService, ReleaseInfo, FALLBACK_RELEASE } from '../../services/github-release.service';
+import { GithubReleaseService, ReleaseInfo } from '../../services/github-release.service';
 
 interface DownloadOption {
   platform: string;
@@ -134,19 +134,10 @@ export class DownloadsComponent implements OnInit {
 
   ngOnInit() {
     this.detectedPlatform = this.detectPlatform();
-    console.debug('[Clarity] Component initialized, detected platform:', this.detectedPlatform);
-    
-    // Apply fallback immediately for instant display
-    this.applyRelease(FALLBACK_RELEASE);
-    
-    // Try to fetch latest release from GitHub
     this.releaseService.getLatestRelease().subscribe((release) => {
       this.loading = false;
       if (release) {
-        console.debug('[Clarity] Got release from service:', release.version);
         this.applyRelease(release);
-      } else {
-        console.error('[Clarity] Failed to load release info, using fallback');
       }
     });
   }
@@ -166,7 +157,6 @@ export class DownloadsComponent implements OnInit {
   }
 
   private applyRelease(release: ReleaseInfo): void {
-    console.debug('[Clarity] applyRelease called with version:', release.version);
     this.version = release.version;
     this.lastUpdated = release.publishedAt.toLocaleDateString('en-US', {
       month: 'long',
@@ -174,13 +164,11 @@ export class DownloadsComponent implements OnInit {
     });
 
     const cards: DownloadOption[] = [this.linuxInstallCard];
-    console.debug('[Clarity] Linux install card added, total cards:', cards.length);
 
     for (const asset of release.assets) {
       const mapping = ASSET_MAP.find((m) => m.match(asset.name));
-      console.debug('[Clarity] Asset:', asset.name, 'Mapped:', !!mapping);
       if (!mapping) continue;
-      const card: DownloadOption = {
+      cards.push({
         platform: mapping.platform,
         label: mapping.label,
         fileName: asset.name,
@@ -189,15 +177,10 @@ export class DownloadsComponent implements OnInit {
         icon: mapping.icon,
         note: mapping.note,
         primary: mapping.primary,
-      };
-      cards.push(card);
-      console.debug('[Clarity] Added card for platform:', mapping.platform);
+      });
     }
 
     this.downloads = cards;
-    console.debug('[Clarity] Total downloads loaded:', this.downloads.length);
-    console.debug('[Clarity] Detected platform:', this.detectedPlatform);
-    console.debug('[Clarity] Visible downloads:', this.visibleDownloads.length);
   }
 
   private detectPlatform(): DetectedPlatform {
