@@ -1,8 +1,11 @@
 <nav class="navbar" [class.scrolled]="scrolled">
   <div class="navbar-inner">
-    <a routerLink="/" class="logo">
-      <img src="logo.png" alt="Clarity logo" class="logo-img" />
-    </a>
+    <div class="logo-container">
+      <a routerLink="/" class="logo">
+        <img src="logo.png" alt="Clarity logo" class="logo-img" />
+      </a>
+      <span class="beta-badge">Beta</span>
+    </div>
 
     <div class="nav-links" [class.open]="mobileMenuOpen">
       <button (click)="goToFeatures()" class="nav-link">Features</button>
