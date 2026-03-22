@@ -1,5 +1,5 @@
 .footer {
-  padding: 16px 24px;
+  padding: 40px 24px 24px;
   border-top: 1px solid var(--border);
 }
 
@@ -8,6 +8,57 @@
   margin: 0 auto;
 }
 
+// ─── Partner Logos ───
+.footer-partners {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.partners-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.partners-logos {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.partner-link {
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.partner-logo {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nt-logo {
+  height: 28px;
+}
+
+.kt-logo {
+  height: 22px;
+}
+
+// ─── Footer Row ───
 .footer-row {
   display: flex;
   align-items: center;
@@ -36,4 +87,61 @@
   color: var(--text-dim);
   font-weight: 500;
   opacity: 0.7;
+}
+
+// ─── Trademark Disclaimer ───
+.footer-trademark {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  text-align: center;
+  opacity: 0.8;
+}
+
+// ─── CFTC Risk Disclosures ───
+.footer-disclosures {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.disclosure {
+  .disclosure-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    opacity: 0.75;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-row {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .footer-partners {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-disclosures {
+    gap: 16px;
+  }
 }
