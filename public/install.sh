@@ -5,6 +5,7 @@ set -euo pipefail
 
 VERSION="0.1.5"
 BASE_URL="https://getclaritybrowser.com/downloads"
+CHECKSUM_URL="${BASE_URL}/SHASUMS256.txt"
 TMP_DIR="$(mktemp -d)"
 
 cleanup() {
@@ -53,13 +54,44 @@ run_sudo() {
   fi
 }
 
+verify_checksum() {
+  local file="$1"
+  local filename
+  filename="$(basename "$file")"
+
+  echo "→ Verifying integrity..."
+  if curl -fsSL -o "${TMP_DIR}/SHASUMS256.txt" "${CHECKSUM_URL}" 2>/dev/null; then
+    expected="$(grep "${filename}" "${TMP_DIR}/SHASUMS256.txt" | awk '{print $1}')"
+    if [ -n "$expected" ]; then
+      actual="$(sha256sum "$file" | awk '{print $1}')"
+      if [ "$expected" != "$actual" ]; then
+        echo "✗ Checksum mismatch! The download may be corrupted."
+        echo "  Expected: ${expected}"
+        echo "  Got:      ${actual}"
+        exit 1
+      fi
+      echo "  ✓ Checksum OK"
+    else
+      echo "  ⚠ No checksum found for ${filename}, skipping verification"
+    fi
+  else
+    echo "  ⚠ Could not download checksums, skipping verification"
+  fi
+}
+
+download_and_verify() {
+  local pkg_file="$1"
+  echo "→ Downloading ${pkg_file}..."
+  curl -fSL --progress-bar -o "${TMP_DIR}/${pkg_file}" "${BASE_URL}/${pkg_file}"
+  verify_checksum "${TMP_DIR}/${pkg_file}"
+}
+
 case "$DISTRO" in
 
   deb)
     echo "→ Detected: Debian/Ubuntu (apt)"
     PKG_FILE="clarity_${VERSION}_amd64.deb"
-    echo "→ Downloading ${PKG_FILE}..."
-    curl -fSL --progress-bar -o "${TMP_DIR}/${PKG_FILE}" "${BASE_URL}/${PKG_FILE}"
+    download_and_verify "${PKG_FILE}"
     echo "→ Installing..."
     run_sudo dpkg -i "${TMP_DIR}/${PKG_FILE}" || run_sudo apt-get install -f -y
     echo ""
@@ -69,8 +101,7 @@ case "$DISTRO" in
   rpm-dnf)
     echo "→ Detected: Fedora / RHEL 8+ (dnf)"
     PKG_FILE="clarity-${VERSION}.x86_64.rpm"
-    echo "→ Downloading ${PKG_FILE}..."
-    curl -fSL --progress-bar -o "${TMP_DIR}/${PKG_FILE}" "${BASE_URL}/${PKG_FILE}"
+    download_and_verify "${PKG_FILE}"
     echo "→ Installing..."
     run_sudo dnf install -y "${TMP_DIR}/${PKG_FILE}"
     echo ""
@@ -80,8 +111,7 @@ case "$DISTRO" in
   rpm-yum)
     echo "→ Detected: CentOS / RHEL (yum)"
     PKG_FILE="clarity-${VERSION}.x86_64.rpm"
-    echo "→ Downloading ${PKG_FILE}..."
-    curl -fSL --progress-bar -o "${TMP_DIR}/${PKG_FILE}" "${BASE_URL}/${PKG_FILE}"
+    download_and_verify "${PKG_FILE}"
     echo "→ Installing..."
     run_sudo yum localinstall -y "${TMP_DIR}/${PKG_FILE}"
     echo ""
@@ -91,8 +121,7 @@ case "$DISTRO" in
   rpm-zypper)
     echo "→ Detected: openSUSE (zypper)"
     PKG_FILE="clarity-${VERSION}.x86_64.rpm"
-    echo "→ Downloading ${PKG_FILE}..."
-    curl -fSL --progress-bar -o "${TMP_DIR}/${PKG_FILE}" "${BASE_URL}/${PKG_FILE}"
+    download_and_verify "${PKG_FILE}"
     echo "→ Installing..."
     run_sudo zypper install -y --allow-unsigned-rpm "${TMP_DIR}/${PKG_FILE}"
     echo ""
@@ -102,8 +131,7 @@ case "$DISTRO" in
   pacman)
     echo "→ Detected: Arch Linux (pacman)"
     PKG_FILE="clarity-${VERSION}.pacman"
-    echo "→ Downloading ${PKG_FILE}..."
-    curl -fSL --progress-bar -o "${TMP_DIR}/${PKG_FILE}" "${BASE_URL}/${PKG_FILE}"
+    download_and_verify "${PKG_FILE}"
     echo "→ Installing..."
     run_sudo pacman -U --noconfirm "${TMP_DIR}/${PKG_FILE}"
     echo ""
@@ -116,8 +144,8 @@ case "$DISTRO" in
     PKG_FILE="Clarity-${VERSION}.AppImage"
     INSTALL_DIR="${HOME}/.local/bin"
     mkdir -p "$INSTALL_DIR"
-    echo "→ Downloading ${PKG_FILE}..."
-    curl -fSL --progress-bar -o "${INSTALL_DIR}/clarity" "${BASE_URL}/${PKG_FILE}"
+    download_and_verify "${PKG_FILE}"
+    cp "${TMP_DIR}/${PKG_FILE}" "${INSTALL_DIR}/clarity"
     chmod +x "${INSTALL_DIR}/clarity"
     echo ""
     echo "  Installed to: ${INSTALL_DIR}/clarity"
