@@ -6,6 +6,9 @@
         <span>Clarity</span>
       </div>
       <span class="footer-copy">&copy; {{ year }} Clarity &middot; Built for traders.</span>
+      @if (version) {
+        <span class="footer-version">v{{ version }}</span>
+      }
     </div>
   </div>
 </footer>

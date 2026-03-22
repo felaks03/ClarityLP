@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { GithubReleaseService } from '../../services/github-release.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,6 +7,15 @@ import { Component } from '@angular/core';
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
+  private releaseService = inject(GithubReleaseService);
+
   year = new Date().getFullYear();
+  version = '';
+
+  ngOnInit() {
+    this.releaseService.getLatestRelease().subscribe((release) => {
+      if (release) this.version = release.version;
+    });
+  }
 }

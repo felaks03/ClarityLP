@@ -12,6 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
 }
 
 .footer-logo {
@@ -26,4 +27,13 @@
 .footer-copy {
   font-size: 0.75rem;
   color: var(--text-dim);
+  flex: 1;
+  text-align: center;
+}
+
+.footer-version {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-weight: 500;
+  opacity: 0.7;
 }

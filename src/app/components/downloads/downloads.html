@@ -9,6 +9,11 @@
     </div>
 
     <div class="downloads-grid">
+      @if (loading) {
+        <div class="downloads-loading">
+          <div class="spinner"></div>
+        </div>
+      }
       @for (dl of visibleDownloads; track dl.fileName) {
         <div class="download-card" [class.detected]="isDetected(dl.platform)">
           <div class="card-glow" *ngIf="isDetected(dl.platform)"></div>
@@ -49,11 +54,13 @@
         {{ showAll ? 'Mostrar solo mi sistema' : 'Ver otros sistemas' }}
       </button>
 
-      <div class="version-info">
-        <span>v{{ version }}</span>
-        <span class="separator">·</span>
-        <span>Actualizado {{ lastUpdated }}</span>
-      </div>
+      @if (version) {
+        <div class="version-info">
+          <span>v{{ version }}</span>
+          <span class="separator">·</span>
+          <span>Actualizado {{ lastUpdated }}</span>
+        </div>
+      }
     </div>
   </div>
 </section>

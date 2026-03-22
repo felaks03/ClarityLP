@@ -51,6 +51,27 @@
   line-height: 1.6;
 }
 
+// ─── Loading ───
+.downloads-loading {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(59, 130, 246, 0.15);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 // ─── Download Grid ───
 .downloads-grid {
   display: grid;
