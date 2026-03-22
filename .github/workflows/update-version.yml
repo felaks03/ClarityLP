@@ -1,0 +1,55 @@
+name: Update Version from Release
+
+on:
+  repository_dispatch:
+    types: [new-release]
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set version
+        id: ver
+        run: echo "version=${{ github.event.client_payload.version }}" >> "$GITHUB_OUTPUT"
+
+      - name: Update version.json
+        run: |
+          VERSION="${{ steps.ver.outputs.version }}"
+          DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          TAG="v${VERSION}"
+          BASE="https://github.com/felaks03/Clarity/releases/download/${TAG}"
+
+          cat > public/version.json << EOF
+          {
+            "version": "${VERSION}",
+            "publishedAt": "${DATE}",
+            "assets": [
+              { "name": "Clarity Setup ${VERSION}.exe", "url": "${BASE}/Clarity%20Setup%20${VERSION}.exe", "sizeMB": 98 },
+              { "name": "Clarity-${VERSION}.dmg", "url": "${BASE}/Clarity-${VERSION}.dmg", "sizeMB": 115 },
+              { "name": "Clarity-${VERSION}-mac.zip", "url": "${BASE}/Clarity-${VERSION}-mac.zip", "sizeMB": 115 },
+              { "name": "clarity_${VERSION}_amd64.deb", "url": "${BASE}/clarity_${VERSION}_amd64.deb", "sizeMB": 93 },
+              { "name": "clarity-${VERSION}.x86_64.rpm", "url": "${BASE}/clarity-${VERSION}.x86_64.rpm", "sizeMB": 93 },
+              { "name": "clarity-${VERSION}.pacman", "url": "${BASE}/clarity-${VERSION}.pacman", "sizeMB": 93 },
+              { "name": "Clarity-${VERSION}.AppImage", "url": "${BASE}/Clarity-${VERSION}.AppImage", "sizeMB": 119 }
+            ]
+          }
+          EOF
+
+      - name: Update install.sh version
+        run: |
+          VERSION="${{ steps.ver.outputs.version }}"
+          sed -i "s/^VERSION=\".*\"/VERSION=\"${VERSION}\"/" public/install.sh
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/version.json public/install.sh
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "release: update to v${{ steps.ver.outputs.version }}"
+          git push
