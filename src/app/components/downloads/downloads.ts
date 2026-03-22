@@ -27,7 +27,6 @@ export class DownloadsComponent implements OnInit {
   copied = false;
   version = '0.1.0';
   lastUpdated = 'March 2026';
-  releasesUrl = 'https://github.com/felaks03/Clarity/releases';
 
   downloads: DownloadOption[] = [
     {
