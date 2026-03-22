@@ -14,6 +14,11 @@
           <div class="spinner"></div>
         </div>
       }
+      @if (!loading && downloads.length === 0) {
+        <div class="downloads-error">
+          <p>Unable to load downloads. Please check your connection.</p>
+        </div>
+      }
       @for (dl of visibleDownloads; track dl.fileName) {
         <div class="download-card" [class.detected]="isDetected(dl.platform)">
           <div class="card-glow" *ngIf="isDetected(dl.platform)"></div>

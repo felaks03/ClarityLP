@@ -125,8 +125,10 @@ export class DownloadsComponent implements OnInit {
   get visibleDownloads(): DownloadOption[] {
     if (this.showAll) return this.sortedDownloads;
     if (this.detectedPlatform) {
-      return this.sortedDownloads.filter((d) => d.platform === this.detectedPlatform && d.primary);
+      const filtered = this.sortedDownloads.filter((d) => d.platform === this.detectedPlatform && d.primary);
+      if (filtered.length > 0) return filtered;
     }
+    // Fallback: show all primary if no detection or no matches found
     return this.sortedDownloads.filter((d) => d.primary);
   }
 
@@ -136,6 +138,8 @@ export class DownloadsComponent implements OnInit {
       this.loading = false;
       if (release) {
         this.applyRelease(release);
+      } else {
+        console.error('[Clarity] Failed to load release info');
       }
     });
   }
@@ -182,10 +186,14 @@ export class DownloadsComponent implements OnInit {
   }
 
   private detectPlatform(): DetectedPlatform {
-    const ua = navigator.userAgent.toLowerCase();
-    if (ua.includes('win')) return 'windows';
-    if (ua.includes('mac')) return 'macos';
-    if (ua.includes('linux')) return 'linux';
+    if (typeof navigator === 'undefined') return null;
+    const ua = navigator.userAgent || '';
+    const platform = navigator.platform || '';
+    const combined = (ua + ' ' + platform).toLowerCase();
+    
+    if (combined.includes('win')) return 'windows';
+    if (combined.includes('mac') || combined.includes('darwin')) return 'macos';
+    if (combined.includes('linux') || combined.includes('x11')) return 'linux';
     return null;
   }
 }
