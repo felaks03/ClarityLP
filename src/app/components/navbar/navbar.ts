@@ -50,8 +50,8 @@ export class NavbarComponent {
     this.scrollService.navigateAndScroll('/', 'features');
   }
 
-  goToDownloads() {
+  goToPricing() {
     this.closeMobileMenu();
-    this.scrollService.navigateAndScroll('/', 'downloads');
+    this.scrollService.navigateAndScroll('/', 'pricing');
   }
 }

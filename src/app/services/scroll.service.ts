@@ -15,6 +15,11 @@ export class ScrollService {
     this.router.navigate([path], { fragment }).then(() => {
       if (fragment) {
         this.scrollToFragment(fragment);
+      } else {
+        // Si no hay fragment, scrollea al top de la página
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 0);
       }
     });
   }
