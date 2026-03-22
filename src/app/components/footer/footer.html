@@ -20,13 +20,36 @@
 
     <!-- CFTC Risk Disclosures -->
     <div class="footer-disclosures">
-      <div class="disclosure">
-        <h4 class="disclosure-title">Declaración de Riesgo</h4>
-        <p>La operación de futuros y forex sobrelleva riesgos substanciales y no es para todos los inversionistas. Un inversionista, podría, potencialmente perder todo o más de la inversión inicial. Capital de Riesgo, es dinero que puede ser perdido, sin poner en juego la seguridad financiera o estilo de vida de la persona. Solo capital de riesgo debe ser utilizado para trading, y solo aquellas personas con suficiente capital de riesgo deben considerar trading. Resultados pasados, no son necesariamente indicativos de resultados futuros.</p>
+      <div class="disclosure-item">
+        <button 
+          class="disclosure-header"
+          (click)="toggleDisclosure('risk')"
+          [attr.aria-expanded]="expandedDisclosures['risk']"
+        >
+          <span class="disclosure-title">Declaración de Riesgo</span>
+          <i class="bi bi-chevron-down" [class.expanded]="expandedDisclosures['risk']"></i>
+        </button>
+        @if (expandedDisclosures['risk']) {
+          <div class="disclosure-content">
+            <p>La operación de futuros y forex sobrelleva riesgos substanciales y no es para todos los inversionistas. Un inversionista, podría, potencialmente perder todo o más de la inversión inicial. Capital de Riesgo, es dinero que puede ser perdido, sin poner en juego la seguridad financiera o estilo de vida de la persona. Solo capital de riesgo debe ser utilizado para trading, y solo aquellas personas con suficiente capital de riesgo deben considerar trading. Resultados pasados, no son necesariamente indicativos de resultados futuros.</p>
+          </div>
+        }
       </div>
-      <div class="disclosure">
-        <h4 class="disclosure-title">Declaración de Resultados Hipotéticos</h4>
-        <p>Resultados hipotéticos de rendimiento deben tener muchas limitaciones inherentes, algunas de las cuales se describen a continuación. No se debe hacer representación de que alguna de las cuentas va o es probable que tenga resultados similares a los mostrados; de hecho, hay diferencias frecuentes entre los resultados hipotéticos y los resultados actuales obtenidos por cualquier programa de trading. Una de las limitaciones de resultados hipotéticos de rendimiento es el hecho de que son preparados con los beneficios en retrospectiva. Además, trading hipotético no involucra riesgo financiero, y ningún record de trading hipotético puede considerar el riesgo financiero de operaciones reales. Por ejemplo, la capacidad de resistir pérdidas o de adherirse a un programa de trading particular sin importar pérdidas son puntos materiales los cuales pueden afectar de manera substancial resultados de trading real. Hay muchos factores relacionados a los mercados en general, o a la implementación de cualquier programa de trading especifico, los cuales no pueden ser todos considerados en la preparación de resultados hipotéticos, todos estos, pueden afectar los resultados de trading de forma adversa.</p>
+
+      <div class="disclosure-item">
+        <button 
+          class="disclosure-header"
+          (click)="toggleDisclosure('hypothetical')"
+          [attr.aria-expanded]="expandedDisclosures['hypothetical']"
+        >
+          <span class="disclosure-title">Declaración de Resultados Hipotéticos</span>
+          <i class="bi bi-chevron-down" [class.expanded]="expandedDisclosures['hypothetical']"></i>
+        </button>
+        @if (expandedDisclosures['hypothetical']) {
+          <div class="disclosure-content">
+            <p>Resultados hipotéticos de rendimiento deben tener muchas limitaciones inherentes, algunas de las cuales se describen a continuación. No se debe hacer representación de que alguna de las cuentas va o es probable que tenga resultados similares a los mostrados; de hecho, hay diferencias frecuentes entre los resultados hipotéticos y los resultados actuales obtenidos por cualquier programa de trading. Una de las limitaciones de resultados hipotéticos de rendimiento es el hecho de que son preparados con los beneficios en retrospectiva. Además, trading hipotético no involucra riesgo financiero, y ningún record de trading hipotético puede considerar el riesgo financiero de operaciones reales. Por ejemplo, la capacidad de resistir pérdidas o de adherirse a un programa de trading particular sin importar pérdidas son puntos materiales los cuales pueden afectar de manera substancial resultados de trading real. Hay muchos factores relacionados a los mercados en general, o a la implementación de cualquier programa de trading especifico, los cuales no pueden ser todos considerados en la preparación de resultados hipotéticos, todos estos, pueden afectar los resultados de trading de forma adversa.</p>
+          </div>
+        }
       </div>
     </div>
 

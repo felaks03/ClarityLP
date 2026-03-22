@@ -13,9 +13,18 @@ export class FooterComponent implements OnInit {
   year = new Date().getFullYear();
   version = '';
 
+  expandedDisclosures: { [key: string]: boolean } = {
+    risk: false,
+    hypothetical: false,
+  };
+
   ngOnInit() {
     this.releaseService.getLatestRelease().subscribe((release) => {
       if (release) this.version = release.version;
     });
+  }
+
+  toggleDisclosure(key: string) {
+    this.expandedDisclosures[key] = !this.expandedDisclosures[key];
   }
 }
