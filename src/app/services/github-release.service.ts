@@ -25,38 +25,38 @@ const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
 // Fallback release data if API fails or repo is private
 export const FALLBACK_RELEASE: ReleaseInfo = {
-  version: '0.1.2',
+  version: '0.1.5',
   publishedAt: new Date('2026-03-22'),
   assets: [
     {
-      name: 'Clarity Setup 0.1.2.exe',
-      url: '/downloads/Clarity%20Setup%200.1.2.exe',
+      name: 'Clarity Setup 0.1.5.exe',
+      url: '/downloads/Clarity%20Setup%200.1.5.exe',
       sizeMB: 98,
     },
-    { name: 'Clarity-0.1.2.dmg', url: '/downloads/Clarity-0.1.2.dmg', sizeMB: 115 },
+    { name: 'Clarity-0.1.5.dmg', url: '/downloads/Clarity-0.1.5.dmg', sizeMB: 115 },
     {
-      name: 'Clarity-0.1.2-mac.zip',
-      url: '/downloads/Clarity-0.1.2-mac.zip',
+      name: 'Clarity-0.1.5-mac.zip',
+      url: '/downloads/Clarity-0.1.5-mac.zip',
       sizeMB: 115,
     },
     {
-      name: 'clarity_0.1.2_amd64.deb',
-      url: '/downloads/clarity_0.1.2_amd64.deb',
+      name: 'clarity_0.1.5_amd64.deb',
+      url: '/downloads/clarity_0.1.5_amd64.deb',
       sizeMB: 93,
     },
     {
-      name: 'clarity-0.1.2.x86_64.rpm',
-      url: '/downloads/clarity-0.1.2.x86_64.rpm',
+      name: 'clarity-0.1.5.x86_64.rpm',
+      url: '/downloads/clarity-0.1.5.x86_64.rpm',
       sizeMB: 93,
     },
     {
-      name: 'clarity-0.1.2.pacman',
-      url: '/downloads/clarity-0.1.2.pacman',
+      name: 'clarity-0.1.5.pacman',
+      url: '/downloads/clarity-0.1.5.pacman',
       sizeMB: 93,
     },
     {
-      name: 'Clarity-0.1.2.AppImage',
-      url: '/downloads/Clarity-0.1.2.AppImage',
+      name: 'Clarity-0.1.5.AppImage',
+      url: '/downloads/Clarity-0.1.5.AppImage',
       sizeMB: 119,
     },
   ],
