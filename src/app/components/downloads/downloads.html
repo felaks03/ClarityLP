@@ -36,6 +36,16 @@
     </div>
 
     <div class="downloads-footer">
+      @if (detectedPlatform === 'linux' || showAll) {
+        <div class="terminal-install">
+          <p class="terminal-label"><i class="bi bi-terminal"></i> Instalar desde terminal (Debian/Ubuntu)</p>
+          <div class="terminal-box" (click)="copyInstallCmd()">
+            <code>curl -fsSL https://getclaritybrowser.com/install.sh | bash</code>
+            <span class="copy-hint">{{ copied ? '✓ Copiado' : 'Click para copiar' }}</span>
+          </div>
+        </div>
+      }
+
       <button class="toggle-platforms" (click)="toggleShowAll()" [attr.aria-expanded]="showAll">
         <i class="bi" [ngClass]="showAll ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
         {{ showAll ? 'Mostrar solo mi sistema' : 'Ver otros sistemas' }}

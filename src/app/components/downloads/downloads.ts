@@ -24,6 +24,7 @@ type DetectedPlatform = 'windows' | 'macos' | 'linux' | null;
 export class DownloadsComponent implements OnInit {
   detectedPlatform: DetectedPlatform = null;
   showAll = false;
+  copied = false;
   version = '0.1.0';
   lastUpdated = 'March 2026';
   releasesUrl = 'https://github.com/felaks03/Clarity/releases';
@@ -61,22 +62,22 @@ export class DownloadsComponent implements OnInit {
     },
     {
       platform: 'linux',
-      label: 'Download for Linux (AppImage)',
-      fileName: 'Clarity-0.1.0.AppImage',
-      url: '/downloads/Clarity-0.1.0.AppImage',
-      size: '119 MB',
-      icon: 'bi-ubuntu',
-      note: 'Make executable with chmod +x and run directly, or use the .deb package for system integration',
-      primary: true,
-    },
-    {
-      platform: 'linux',
-      label: 'Download .deb (Debian/Ubuntu)',
+      label: 'Install on Linux',
       fileName: 'clarity_0.1.0_amd64.deb',
       url: '/downloads/clarity_0.1.0_amd64.deb',
       size: '93 MB',
       icon: 'bi-ubuntu',
-      note: 'For Debian/Ubuntu — install with dpkg -i or double-click to open in Software Center',
+      note: 'Debian/Ubuntu — or install from terminal (see below)',
+      primary: true,
+    },
+    {
+      platform: 'linux',
+      label: 'Download AppImage',
+      fileName: 'Clarity-0.1.0.AppImage',
+      url: '/downloads/Clarity-0.1.0.AppImage',
+      size: '119 MB',
+      icon: 'bi-ubuntu',
+      note: 'Portable — make executable with chmod +x and run directly',
       primary: false,
     },
   ];
@@ -109,6 +110,12 @@ export class DownloadsComponent implements OnInit {
 
   isDetected(platform: string): boolean {
     return this.detectedPlatform === platform;
+  }
+
+  copyInstallCmd() {
+    navigator.clipboard.writeText('curl -fsSL https://getclaritybrowser.com/install.sh | bash');
+    this.copied = true;
+    setTimeout(() => (this.copied = false), 2000);
   }
 
   private detectPlatform(): DetectedPlatform {
