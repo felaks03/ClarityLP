@@ -22,7 +22,7 @@ jobs:
           VERSION="${{ steps.ver.outputs.version }}"
           DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           TAG="v${VERSION}"
-          BASE="https://github.com/felaks03/Clarity/releases/download/${TAG}"
+          BASE="https://github.com/felaks03/ClarityLP/releases/download/${TAG}"
 
           export VERSION DATE BASE
           node -e '
