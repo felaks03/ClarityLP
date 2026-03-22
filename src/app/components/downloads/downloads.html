@@ -23,12 +23,20 @@
               }
             </div>
             <h3 class="card-title">{{ dl.label }}</h3>
-            <p class="card-file">{{ dl.fileName }}</p>
-            <p class="card-size">{{ dl.size }}</p>
-            <a [href]="dl.url" class="btn-download" [class.btn-primary-dl]="isDetected(dl.platform) && dl.primary" download>
-              <i class="bi bi-download"></i>
-              {{ dl.label }}
-            </a>
+            @if (dl.fileName === 'install.sh') {
+              <div class="terminal-box-inline" (click)="copyInstallCmd()">
+                <code>curl -fsSL getclaritybrowser.com/install.sh | bash</code>
+                <span class="copy-hint">{{ copied ? '✓ Copiado' : 'Copiar' }}</span>
+              </div>
+              <p class="card-note-inline">Soporta: Debian/Ubuntu, Fedora/RHEL, Arch, openSUSE y más</p>
+            } @else {
+              <p class="card-file">{{ dl.fileName }}</p>
+              <p class="card-size">{{ dl.size }}</p>
+              <a [href]="dl.url" class="btn-download" [class.btn-primary-dl]="isDetected(dl.platform) && dl.primary" download>
+                <i class="bi bi-download"></i>
+                {{ dl.label }}
+              </a>
+            }
             <p class="card-note"><i class="bi bi-info-circle"></i> {{ dl.note }}</p>
           </div>
         </div>
@@ -36,16 +44,6 @@
     </div>
 
     <div class="downloads-footer">
-      @if (detectedPlatform === 'linux' || showAll) {
-        <div class="terminal-install">
-          <p class="terminal-label"><i class="bi bi-terminal"></i> Instalar desde terminal (Debian/Ubuntu)</p>
-          <div class="terminal-box" (click)="copyInstallCmd()">
-            <code>curl -fsSL https://getclaritybrowser.com/install.sh | bash</code>
-            <span class="copy-hint">{{ copied ? '✓ Copiado' : 'Click para copiar' }}</span>
-          </div>
-        </div>
-      }
-
       <button class="toggle-platforms" (click)="toggleShowAll()" [attr.aria-expanded]="showAll">
         <i class="bi" [ngClass]="showAll ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
         {{ showAll ? 'Mostrar solo mi sistema' : 'Ver otros sistemas' }}
