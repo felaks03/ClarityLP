@@ -4,7 +4,7 @@
 set -euo pipefail
 
 VERSION="0.1.5"
-BASE_URL="https://github.com/felaks03/Clarity/releases/download/v${VERSION}"
+BASE_URL="https://getclaritybrowser.com/downloads"
 TMP_DIR="$(mktemp -d)"
 
 cleanup() {
