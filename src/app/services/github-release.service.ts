@@ -24,7 +24,7 @@ const CACHE_KEY = 'clarity_latest_release';
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
 // Fallback release data if API fails or repo is private
-const FALLBACK_RELEASE: ReleaseInfo = {
+export const FALLBACK_RELEASE: ReleaseInfo = {
   version: '0.1.0',
   publishedAt: new Date('2026-03-22'),
   assets: [

@@ -17,6 +17,18 @@
       @if (!loading && downloads.length === 0) {
         <div class="downloads-error">
           <p>Unable to load downloads. Please check your connection.</p>
+          <p style="font-size: 0.75rem; margin-top: 8px; opacity: 0.6;">Downloads array is empty</p>
+        </div>
+      }
+      @if (!loading && downloads.length > 0 && visibleDownloads.length === 0) {
+        <div class="downloads-error">
+          <p>No downloads available for your system.</p>
+          <p style="font-size: 0.75rem; margin-top: 8px; opacity: 0.6;">
+            Downloads loaded: {{ downloads.length }}, Platform: {{ detectedPlatform || 'Not detected' }}, Visible: {{ visibleDownloads.length }}
+          </p>
+          <button (click)="toggleShowAll()" style="margin-top: 12px; padding: 8px 16px; background: var(--accent); color: white; border: none; border-radius: 6px; cursor: pointer;">
+            Show all downloads
+          </button>
         </div>
       }
       @for (dl of visibleDownloads; track dl.fileName) {
