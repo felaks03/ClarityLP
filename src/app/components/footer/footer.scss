@@ -1,6 +1,7 @@
 .footer {
-  padding: 40px 24px 24px;
+  padding: 60px 24px 40px;
   border-top: 1px solid var(--border);
+  background: var(--bg-secondary);
 }
 
 .container {
@@ -13,57 +14,100 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  padding-bottom: 24px;
-  margin-bottom: 24px;
+  gap: 32px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
   border-bottom: 1px solid var(--border);
 }
 
 .partners-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--text-dim);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }
 
 .partners-logos {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 
 .partner-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  opacity: 0.7;
-  transition: opacity var(--transition-fast);
+  opacity: 0.6;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 
   &:hover {
     opacity: 1;
+    transform: scale(1.05);
   }
 }
 
 .partner-logo {
-  height: 24px;
+  height: 32px;
   width: auto;
   object-fit: contain;
 }
 
 .nt-logo {
-  height: 28px;
+  height: 36px;
 }
 
 .kt-logo {
-  height: 22px;
+  height: 28px;
+}
+
+// ─── CFTC Risk Disclosures ───
+.footer-disclosures {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.disclosure {
+  .disclosure-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+}
+
+// ─── Trademark Disclaimer ───
+.footer-trademark {
+  margin-bottom: 40px;
+  padding: 16px 20px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  border-left: 2px solid var(--accent);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 // ─── Footer Row ───
 .footer-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 24px;
+  padding-top: 24px;
+  text-align: center;
 }
 
 .footer-logo {
@@ -71,77 +115,62 @@
   align-items: center;
   gap: 6px;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-primary);
 }
 
 .footer-copy {
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  flex: 1;
-  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
 }
 
 .footer-version {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--text-dim);
   font-weight: 500;
-  opacity: 0.7;
 }
 
-// ─── Trademark Disclaimer ───
-.footer-trademark {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  line-height: 1.6;
-  text-align: center;
-  opacity: 0.8;
-}
-
-// ─── CFTC Risk Disclosures ───
-.footer-disclosures {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.disclosure {
-  .disclosure-title {
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 4px;
-  }
-
-  p {
-    font-size: 0.6rem;
-    color: var(--text-dim);
-    line-height: 1.6;
-    opacity: 0.75;
+@media (max-width: 968px) {
+  .footer-disclosures {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 
 @media (max-width: 768px) {
-  .footer-row {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
+  .footer {
+    padding: 40px 20px 32px;
   }
 
   .footer-partners {
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+
+  .partners-logos {
+    gap: 20px;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 16px;
   }
 
   .footer-disclosures {
-    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    gap: 20px;
+  }
+
+  .footer-trademark {
+    margin-bottom: 24px;
+    font-size: 0.7rem;
+  }
+
+  .disclosure p {
+    font-size: 0.75rem;
   }
 }
