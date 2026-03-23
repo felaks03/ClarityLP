@@ -5,8 +5,9 @@
 }
 
 .container {
-  max-width: 640px;
+  max-width: var(--container-max);
   margin: 0 auto;
+  padding: 0 40px;
 }
 
 .partners-header {
@@ -20,11 +21,11 @@
 }
 
 .partners-intro {
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-dim);
+  color: var(--text-muted);
   white-space: nowrap;
 }
 
@@ -38,13 +39,13 @@
 .partner-badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
+  gap: 6px;
+  padding: 6px 14px;
   border: 1px solid var(--border);
-  border-radius: 5px;
+  border-radius: 6px;
   text-decoration: none;
-  color: var(--text-dim);
-  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
   font-weight: 600;
   transition: border-color 0.2s, color 0.2s;
 
@@ -60,7 +61,7 @@
 
 .nt-logo,
 .kt-logo {
-  height: 14px;
+  height: 18px;
   width: auto;
   display: block;
   object-fit: contain;
