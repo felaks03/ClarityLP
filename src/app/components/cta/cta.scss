@@ -35,10 +35,7 @@
 }
 
 .gradient-text {
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent-active);
 }
 
 .cta-subtitle {
@@ -171,7 +168,8 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 300px;
   background: radial-gradient(ellipse, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
   pointer-events: none;
