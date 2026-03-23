@@ -1,40 +1,40 @@
 {
-  "version": "0.1.25",
-  "publishedAt": "2026-03-23T13:37:05Z",
+  "version": "0.1.26",
+  "publishedAt": "2026-03-23T13:41:28Z",
   "assets": [
     {
-      "name": "Clarity Setup 0.1.25.exe",
-      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.25/Clarity%20Setup%200.1.25.exe",
+      "name": "Clarity Setup 0.1.26.exe",
+      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.26/Clarity%20Setup%200.1.26.exe",
       "sizeMB": 98
     },
     {
-      "name": "Clarity-0.1.25.dmg",
-      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.25/Clarity-0.1.25.dmg",
+      "name": "Clarity-0.1.26.dmg",
+      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.26/Clarity-0.1.26.dmg",
       "sizeMB": 115
     },
     {
-      "name": "Clarity-0.1.25-mac.zip",
-      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.25/Clarity-0.1.25-mac.zip",
+      "name": "Clarity-0.1.26-mac.zip",
+      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.26/Clarity-0.1.26-mac.zip",
       "sizeMB": 115
     },
     {
-      "name": "clarity_0.1.25_amd64.deb",
-      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.25/clarity_0.1.25_amd64.deb",
+      "name": "clarity_0.1.26_amd64.deb",
+      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.26/clarity_0.1.26_amd64.deb",
       "sizeMB": 93
     },
     {
-      "name": "clarity-0.1.25.x86_64.rpm",
-      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.25/clarity-0.1.25.x86_64.rpm",
+      "name": "clarity-0.1.26.x86_64.rpm",
+      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.26/clarity-0.1.26.x86_64.rpm",
       "sizeMB": 93
     },
     {
-      "name": "clarity-0.1.25.pacman",
-      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.25/clarity-0.1.25.pacman",
+      "name": "clarity-0.1.26.pacman",
+      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.26/clarity-0.1.26.pacman",
       "sizeMB": 93
     },
     {
-      "name": "Clarity-0.1.25.AppImage",
-      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.25/Clarity-0.1.25.AppImage",
+      "name": "Clarity-0.1.26.AppImage",
+      "url": "https://github.com/felaks03/ClarityLP/releases/download/v0.1.26/Clarity-0.1.26.AppImage",
       "sizeMB": 119
     }
   ]
