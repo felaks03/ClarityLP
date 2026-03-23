@@ -31,7 +31,7 @@ jobs:
               version: v,
               publishedAt: d,
               assets: [
-                { name: "Clarity Setup " + v + ".exe", url: b + "/Clarity%20Setup%20" + v + ".exe", sizeMB: 98 },
+                { name: "Clarity-Setup-" + v + ".exe", url: b + "/Clarity-Setup-" + v + ".exe", sizeMB: 98 },
                 { name: "Clarity-" + v + ".dmg", url: b + "/Clarity-" + v + ".dmg", sizeMB: 115 },
                 { name: "Clarity-" + v + "-mac.zip", url: b + "/Clarity-" + v + "-mac.zip", sizeMB: 115 },
                 { name: "clarity_" + v + "_amd64.deb", url: b + "/clarity_" + v + "_amd64.deb", sizeMB: 93 },
