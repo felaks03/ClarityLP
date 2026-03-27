@@ -10,64 +10,393 @@
     </div>
 
     <h1 class="hero-title reveal">
-      {{ t('hero.titleLine1') }}<br>
-      <span class="gradient-text">{{ t('hero.titleLine2') }}</span>
+      {{ t('hero.titleLine1') }} <span class="gradient-text">{{ t('hero.titleLine2') }}</span>
     </h1>
 
-    <p class="hero-subtitle reveal">
-      {{ t('hero.subtitle') }}
-    </p>
-
-    <div class="hero-actions reveal">
-      <button (click)="goToRoadmap()" class="btn-primary">
-        <i class="bi bi-map"></i>
-        {{ t('hero.btnRoadmap') }}
-      </button>
-      <button (click)="goToFeatures()" class="btn-secondary">
-        <span>{{ t('hero.btnFeatures') }}</span>
-        <i class="bi bi-arrow-right"></i>
-      </button>
-    </div>
   </div>
 
-  <!-- Floating UI mockup -->
-  <div class="hero-visual reveal">
-    <div class="mockup">
-      <div class="mockup-titlebar">
-        <div class="mockup-dots">
-          <span class="dot dot-red"></span>
-          <span class="dot dot-yellow"></span>
-          <span class="dot dot-green"></span>
-        </div>
-        <span class="mockup-title">Clarity — Full Trading Mode</span>
-      </div>
-      <div class="mockup-body">
-        <div class="mockup-sidebar">
-          <div class="sidebar-item active"></div>
-          <div class="sidebar-item"></div>
-          <div class="sidebar-item"></div>
-          <div class="sidebar-item"></div>
-        </div>
-        <div class="mockup-content">
-          <div class="content-chart">
-            <svg viewBox="0 0 400 120" class="chart-line">
-              <polyline points="0,80 40,65 80,75 120,45 160,55 200,30 240,40 280,20 320,35 360,15 400,25"
-                fill="none" stroke="url(#chart-gradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <defs>
-                <linearGradient id="chart-gradient" x1="0" y1="0" x2="400" y2="0">
-                  <stop offset="0%" stop-color="#3b82f6"/>
-                  <stop offset="100%" stop-color="#22c55e"/>
-                </linearGradient>
-              </defs>
-            </svg>
+  <!-- Floating UI mockup carousel -->
+  <div class="hero-visual reveal" id="showcase" #showcaseRef
+    [class.showcase-visible]="showcaseVisible">
+    <div class="mockup-scene">
+
+        <!-- ① Full Trading Mode -->
+        <div class="mockup-card"
+          [class.is-active]="mockupOffset(0) === 0"
+          [style.transform]="mockupTransform(0)"
+          [style.opacity]="mockupOpacity(0)"
+          [style.z-index]="mockupZIndex(0)"
+          [style.pointer-events]="mockupAbsOffset(0) <= 1 ? 'auto' : 'none'"
+          [style.filter]="mockupOffset(0) !== 0 ? 'brightness(0.5) saturate(0.5)' : 'none'"
+          (click)="selectMockup(0)">
+          <div class="mockup">
+            <div class="mockup-titlebar">
+              <div class="mockup-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="mockup-title">Clarity — {{ t('features.items.ftm.title') }}</span>
+            </div>
+            <div class="mockup-body">
+              <div class="mockup-sidebar">
+                <div class="sidebar-item active"></div>
+                <div class="sidebar-item"></div>
+                <div class="sidebar-item"></div>
+                <div class="sidebar-item"></div>
+              </div>
+              <div class="mockup-content ftm-content">
+                <!-- Session status bar -->
+                <div class="ftm-status-bar">
+                  <span class="ftm-status-dot"></span>
+                  <span class="ftm-status-text">09:00 – 11:00</span>
+                  <span class="ftm-pill ftm-pill-blue"><i class="bi bi-shield-fill-check"></i> Risk locked</span>
+                  <span class="ftm-pill ftm-pill-red"><i class="bi bi-slash-circle"></i> Blocked</span>
+                  <span class="ftm-timer"><i class="bi bi-hourglass-split"></i> 05:41:23</span>
+                </div>
+                <!-- Chart with grid + TP/SL lines + area fill -->
+                <div class="content-chart">
+                  <svg viewBox="0 0 400 130" class="chart-line">
+                    <defs>
+                      <linearGradient id="chart-gradient" x1="0" y1="0" x2="400" y2="0">
+                        <stop offset="0%" stop-color="#3b82f6"/>
+                        <stop offset="100%" stop-color="#22c55e"/>
+                      </linearGradient>
+                      <linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(59,130,246,0.15)"/>
+                        <stop offset="100%" stop-color="rgba(59,130,246,0)"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Area fill -->
+                    <polygon points="0,85 40,70 80,80 120,50 160,60 200,35 240,45 280,25 320,40 360,20 400,30 400,130 0,130"
+                      fill="url(#chart-fill)"/>
+                    <!-- Price line -->
+                    <polyline points="0,85 40,70 80,80 120,50 160,60 200,35 240,45 280,25 320,40 360,20 400,30"
+                      fill="none" stroke="url(#chart-gradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="content-panels">
-            <div class="panel-block"></div>
-            <div class="panel-block"></div>
+        </div>
+
+        <!-- ② Workspaces & Layouts -->
+        <div class="mockup-card"
+          [class.is-active]="mockupOffset(1) === 0"
+          [style.transform]="mockupTransform(1)"
+          [style.opacity]="mockupOpacity(1)"
+          [style.z-index]="mockupZIndex(1)"
+          [style.pointer-events]="mockupAbsOffset(1) <= 1 ? 'auto' : 'none'"
+          [style.filter]="mockupOffset(1) !== 0 ? 'brightness(0.5) saturate(0.5)' : 'none'"
+          (click)="selectMockup(1)">
+          <div class="mockup">
+            <div class="mockup-titlebar">
+              <div class="mockup-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="mockup-title">Clarity — {{ t('features.items.layouts.title') }}</span>
+            </div>
+            <div class="mockup-body workspace-body">
+              <div class="mockup-sidebar">
+                <div class="sidebar-item"></div>
+                <div class="sidebar-item active"></div>
+                <div class="sidebar-item"></div>
+                <div class="sidebar-item"></div>
+              </div>
+              <div class="mockup-content workspace-content">
+                <!-- Workspace tabs -->
+                <div class="ws-tabs">
+                  <span class="ws-tab active">Analysis</span>
+                  <span class="ws-tab">Execution</span>
+                  <span class="ws-tab">Review</span>
+                  <span class="ws-tab ws-tab-add">+</span>
+                </div>
+                <!-- Split layout -->
+                <div class="ws-layout">
+                  <div class="ws-panel ws-panel-main">
+                    <div class="ws-panel-bar">
+                      <span class="ws-panel-url">tradingview.com</span>
+                    </div>
+                    <div class="ws-panel-content">
+                      <svg viewBox="0 0 260 80" class="chart-line">
+                        <polyline points="0,60 30,50 60,55 90,30 120,40 150,20 180,35 210,15 240,25 260,10"
+                          fill="none" stroke="url(#ws-chart-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs>
+                          <linearGradient id="ws-chart-grad" x1="0" y1="0" x2="260" y2="0">
+                            <stop offset="0%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#8b5cf6"/>
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ws-divider ws-divider-v"></div>
+                  <div class="ws-panel-col">
+                    <div class="ws-panel ws-panel-top">
+                      <div class="ws-panel-bar">
+                        <span class="ws-panel-url">finviz.com</span>
+                      </div>
+                      <div class="ws-panel-content">
+                        <div class="ws-placeholder-rows">
+                          <div class="ws-row-line"></div>
+                          <div class="ws-row-line short"></div>
+                          <div class="ws-row-line"></div>
+                          <div class="ws-row-line short"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ws-divider ws-divider-h"></div>
+                    <div class="ws-panel ws-panel-bottom">
+                      <div class="ws-panel-bar">
+                        <span class="ws-panel-url">thinkorswim.com</span>
+                      </div>
+                      <div class="ws-panel-content">
+                        <div class="ws-placeholder-grid">
+                          <div class="ws-grid-cell"></div>
+                          <div class="ws-grid-cell"></div>
+                          <div class="ws-grid-cell"></div>
+                          <div class="ws-grid-cell"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+
+        <!-- ③ Trading Checklist -->
+        <div class="mockup-card"
+          [class.is-active]="mockupOffset(2) === 0"
+          [style.transform]="mockupTransform(2)"
+          [style.opacity]="mockupOpacity(2)"
+          [style.z-index]="mockupZIndex(2)"
+          [style.pointer-events]="mockupAbsOffset(2) <= 1 ? 'auto' : 'none'"
+          [style.filter]="mockupOffset(2) !== 0 ? 'brightness(0.5) saturate(0.5)' : 'none'"
+          (click)="selectMockup(2)">
+          <div class="mockup">
+            <div class="mockup-titlebar">
+              <div class="mockup-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="mockup-title">Clarity — {{ t('features.items.checklist.title') }}</span>
+            </div>
+            <div class="mockup-body">
+              <div class="mockup-sidebar">
+                <div class="sidebar-item"></div>
+                <div class="sidebar-item"></div>
+                <div class="sidebar-item active"></div>
+                <div class="sidebar-item"></div>
+              </div>
+              <div class="mockup-content checklist-content">
+                <div class="cl-header">
+                  <span class="cl-title">Pre-Market Checklist</span>
+                  <span class="cl-badge">3/5</span>
+                </div>
+                <div class="cl-table">
+                  <!-- Header -->
+                  <div class="cl-row cl-row-header">
+                    <div class="cl-cell cl-cell-check"></div>
+                    <div class="cl-cell cl-cell-name">Item</div>
+                    <div class="cl-cell cl-cell-col">Bias</div>
+                    <div class="cl-cell cl-cell-col">Timeframe</div>
+                    <div class="cl-cell cl-cell-col">Notes</div>
+                  </div>
+                  <!-- Completed rows -->
+                  <div class="cl-row cl-completed">
+                    <div class="cl-cell cl-cell-check"><span class="cl-check checked"></span></div>
+                    <div class="cl-cell cl-cell-name">Review daily levels</div>
+                    <div class="cl-cell cl-cell-col"><span class="cl-tag cl-tag-green">Bullish</span></div>
+                    <div class="cl-cell cl-cell-col">1D</div>
+                    <div class="cl-cell cl-cell-col">Key S/R mapped</div>
+                  </div>
+                  <div class="cl-row cl-completed">
+                    <div class="cl-cell cl-cell-check"><span class="cl-check checked"></span></div>
+                    <div class="cl-cell cl-cell-name">Check economic calendar</div>
+                    <div class="cl-cell cl-cell-col"><span class="cl-tag cl-tag-yellow">Neutral</span></div>
+                    <div class="cl-cell cl-cell-col">—</div>
+                    <div class="cl-cell cl-cell-col">FOMC at 14:00</div>
+                  </div>
+                  <div class="cl-row cl-completed">
+                    <div class="cl-cell cl-cell-check"><span class="cl-check checked"></span></div>
+                    <div class="cl-cell cl-cell-name">Define entry rules</div>
+                    <div class="cl-cell cl-cell-col"><span class="cl-tag cl-tag-green">Bullish</span></div>
+                    <div class="cl-cell cl-cell-col">5m</div>
+                    <div class="cl-cell cl-cell-col">Break & retest</div>
+                  </div>
+                  <!-- Pending rows -->
+                  <div class="cl-row">
+                    <div class="cl-cell cl-cell-check"><span class="cl-check"></span></div>
+                    <div class="cl-cell cl-cell-name">Set stop-loss levels</div>
+                    <div class="cl-cell cl-cell-col"><span class="cl-tag cl-tag-red">Bearish</span></div>
+                    <div class="cl-cell cl-cell-col">15m</div>
+                    <div class="cl-cell cl-cell-col dim">—</div>
+                  </div>
+                  <div class="cl-row">
+                    <div class="cl-cell cl-cell-check"><span class="cl-check"></span></div>
+                    <div class="cl-cell cl-cell-name">Confirm risk/reward</div>
+                    <div class="cl-cell cl-cell-col dim">—</div>
+                    <div class="cl-cell cl-cell-col dim">—</div>
+                    <div class="cl-cell cl-cell-col dim">—</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ④ Risk Settings -->
+        <div class="mockup-card"
+          [class.is-active]="mockupOffset(3) === 0"
+          [style.transform]="mockupTransform(3)"
+          [style.opacity]="mockupOpacity(3)"
+          [style.z-index]="mockupZIndex(3)"
+          [style.pointer-events]="mockupAbsOffset(3) <= 1 ? 'auto' : 'none'"
+          [style.filter]="mockupOffset(3) !== 0 ? 'brightness(0.5) saturate(0.5)' : 'none'"
+          (click)="selectMockup(3)">
+          <div class="mockup">
+            <div class="mockup-titlebar">
+              <div class="mockup-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="mockup-title">Clarity — {{ t('features.items.risk.title') }}</span>
+            </div>
+            <div class="mockup-body">
+              <div class="mockup-sidebar">
+                <div class="sidebar-item"></div>
+                <div class="sidebar-item"></div>
+                <div class="sidebar-item"></div>
+                <div class="sidebar-item active"></div>
+              </div>
+              <div class="mockup-content risk-content">
+                <div class="risk-header">
+                  <svg class="risk-shield-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  <span class="risk-title">Risk Blocker</span>
+                  <span class="risk-lock-badge"><i class="bi bi-lock-fill"></i> Locked · 27d left</span>
+                </div>
+                <!-- Per Trade -->
+                <div class="risk-group-mock">
+                  <span class="risk-group-label">Per Trade</span>
+                  <div class="risk-fields">
+                    <div class="risk-field-mock on">
+                      <span class="risk-field-name">Max Loss</span>
+                      <div class="risk-field-val">
+                        <span class="risk-field-num">$150</span>
+                        <span class="risk-toggle on"></span>
+                      </div>
+                    </div>
+                    <div class="risk-field-mock on">
+                      <span class="risk-field-name">Max Win</span>
+                      <div class="risk-field-val">
+                        <span class="risk-field-num">$500</span>
+                        <span class="risk-toggle on"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Daily -->
+                <div class="risk-group-mock">
+                  <span class="risk-group-label">Daily</span>
+                  <div class="risk-fields">
+                    <div class="risk-field-mock on">
+                      <span class="risk-field-name">Max Loss</span>
+                      <div class="risk-field-val">
+                        <span class="risk-field-num">$300</span>
+                        <span class="risk-toggle on"></span>
+                      </div>
+                    </div>
+                    <div class="risk-field-mock off">
+                      <span class="risk-field-name">Max Win</span>
+                      <div class="risk-field-val">
+                        <span class="risk-field-num dim">—</span>
+                        <span class="risk-toggle"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Position -->
+                <div class="risk-group-mock">
+                  <span class="risk-group-label">Position</span>
+                  <div class="risk-fields">
+                    <div class="risk-field-mock on">
+                      <span class="risk-field-name">Max Contracts</span>
+                      <div class="risk-field-val">
+                        <span class="risk-field-num">2 micros</span>
+                        <span class="risk-toggle on"></span>
+                      </div>
+                    </div>
+                    <div class="risk-field-mock on">
+                      <span class="risk-field-name">Max Trades</span>
+                      <div class="risk-field-val">
+                        <span class="risk-field-num">3</span>
+                        <span class="risk-toggle on"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
+
+    <!-- Floating feature cards -->
+    @for (fId of mockupFeatureIds; track fId; let i = $index) {
+      <div class="floating-feature"
+        [class.ff-active]="activeMockup === i && showcaseVisible"
+        [style.--f-color]="featureInfoMap[fId].color"
+        [style.--f-glow]="featureInfoMap[fId].glow">
+        <div class="ff-glow"></div>
+        <div class="ff-flipper">
+          <!-- Back face: big icon -->
+          <div class="ff-back">
+            <i class="bi" [class]="featureInfoMap[fId].icon"></i>
+          </div>
+          <!-- Front face: content -->
+          <div class="ff-inner">
+            <div class="ff-header">
+              <div class="ff-icon">
+                <i class="bi" [class]="featureInfoMap[fId].icon"></i>
+              </div>
+              <span class="ff-badge">{{ t('features.items.' + fId + '.label') }}</span>
+            </div>
+            <h3 class="ff-title">{{ t('features.items.' + fId + '.title') }}</h3>
+            <p class="ff-desc">{{ t('features.items.' + fId + '.description') }}</p>
+            <div class="ff-pills">
+              @for (h of t('features.items.' + fId + '.highlights'); track h) {
+                <span class="ff-pill">{{ h }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- Side arrows -->
+    <button class="mockup-arrow arrow-side arrow-left" (click)="prevMockup()">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <button class="mockup-arrow arrow-side arrow-right" (click)="nextMockup()">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+
+    <!-- Dots navigation -->
+    <div class="mockup-nav">
+      @for (id of mockupFeatureIds; track id; let i = $index) {
+        <button class="mockup-dot" [class.active]="activeMockup === i" (click)="selectMockup(i)"></button>
+      }
+    </div>
+
     <div class="mockup-glow"></div>
   </div>
 </section>
