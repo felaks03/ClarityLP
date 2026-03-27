@@ -1,6 +1,5 @@
 import { Component, HostListener } from '@angular/core';
 import { HeroComponent } from '../../components/hero/hero';
-import { FeaturesComponent } from '../../components/features/features';
 import { PricingComponent } from '../../components/pricing/pricing';
 import { DownloadsComponent } from '../../components/downloads/downloads';
 import { CtaComponent } from '../../components/cta/cta';
@@ -9,10 +8,9 @@ import { RiesgosComponent } from '../../components/riesgos/riesgos';
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [HeroComponent, FeaturesComponent, PricingComponent, DownloadsComponent, CtaComponent, RiesgosComponent],
+  imports: [HeroComponent, PricingComponent, DownloadsComponent, CtaComponent, RiesgosComponent],
   template: `
     <app-hero></app-hero>
-    <app-features></app-features>
     <app-pricing></app-pricing>
     <app-downloads></app-downloads>
     <app-cta></app-cta>
