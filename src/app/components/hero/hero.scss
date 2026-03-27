@@ -985,8 +985,8 @@
   pointer-events: none;
   transform: translateY(32px);
   transition:
-    opacity 1300ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1500ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 1300ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 1500ms cubic-bezier(0.4, 0, 0.2, 1);
   perspective: 1200px;
 
   &.ff-active {
@@ -1003,7 +1003,7 @@
   filter: blur(40px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 1800ms ease;
+  transition: opacity 1800ms cubic-bezier(0.4, 0, 0.2, 1);
 
   .ff-active & {
     opacity: 1;
@@ -1025,7 +1025,7 @@
 // Once the showcase section is in view, enable the flip
 .hero-visual.showcase-visible {
   .ff-flipper {
-    transition: transform 2000ms cubic-bezier(0.32, 0.72, 0, 1) 300ms;
+    transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1) 300ms;
   }
 
   .floating-feature.ff-active .ff-flipper {
