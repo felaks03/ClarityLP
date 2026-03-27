@@ -8,7 +8,6 @@
     </div>
 
     <div class="nav-links" [class.open]="mobileMenuOpen">
-      <button (click)="goToFeatures()" class="nav-link">{{ t('nav.features') }}</button>
       <button (click)="goToPricing()" class="nav-link">{{ t('nav.pricing') }}</button>
       <a routerLink="/roadmap" class="nav-link" (click)="closeMobileMenu()">{{ t('nav.roadmap') }}</a>
       <button class="theme-toggle-btn" (click)="toggleTheme()" [attr.aria-label]="theme === 'dark' ? t('nav.toggleDark') : t('nav.toggleLight')">

@@ -184,7 +184,7 @@
   position: relative;
   margin-top: 64px;
   width: 100%;
-  max-width: 900px;
+  max-width: 1060px;
 }
 
 .mockup-scene {
@@ -193,14 +193,14 @@
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 510px;
+  min-height: 600px;
   padding: 16px 0;
 }
 
 .mockup-card {
   grid-area: 1 / 1;
-  width: 760px;
-  max-width: 88vw;
+  width: 900px;
+  max-width: 90vw;
   cursor: pointer;
   transition:
     transform 700ms cubic-bezier(0.32, 0.72, 0, 1),
@@ -229,7 +229,7 @@
   border: 1px solid var(--border);
   background: var(--bg-secondary);
   box-shadow: var(--shadow-lg);
-  height: 450px;
+  height: 530px;
   display: flex;
   flex-direction: column;
 }
@@ -979,18 +979,19 @@
   position: absolute;
   bottom: 70px;
   right: -30px;
-  width: 310px;
+  width: 370px;
   z-index: 30;
-  transform: rotate(3.5deg) translateY(24px) scale(0.96);
   opacity: 0;
   pointer-events: none;
+  transform: rotate(3.5deg) translateY(32px);
   transition:
-    opacity 550ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 600ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 500ms cubic-bezier(0.32, 0.72, 0, 1);
+  perspective: 1200px;
 
   &.ff-active {
     opacity: 1;
-    transform: rotate(3.5deg) translateY(0) scale(1);
+    transform: rotate(3.5deg) translateY(0);
     pointer-events: auto;
   }
 }
@@ -1009,9 +1010,62 @@
   }
 }
 
+// 3D flip wrapper
+.ff-flipper {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg); // starts showing back
+  transition: transform 700ms cubic-bezier(0.32, 0.72, 0, 1) 80ms;
+
+  .ff-active & {
+    transform: rotateY(0deg);
+  }
+}
+
+// ── Back face: large icon ────────────────────────
+.ff-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--bg-secondary) 82%, transparent);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid color-mix(in srgb, var(--f-color) 22%, var(--border));
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.22),
+    0 0 60px -15px var(--f-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  // subtle background glow behind icon
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, color-mix(in srgb, var(--f-color) 12%, transparent) 0%, transparent 70%);
+  }
+
+  i {
+    position: relative;
+    z-index: 1;
+    font-size: 7rem;
+    color: var(--f-color);
+    opacity: 0.35;
+    filter: blur(0.5px);
+  }
+}
+
+// ── Front face: content ─────────────────────────
 .ff-inner {
   position: relative;
   z-index: 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   padding: 24px 22px 20px;
   background: color-mix(in srgb, var(--bg-secondary) 82%, transparent);
   backdrop-filter: blur(24px) saturate(1.4);

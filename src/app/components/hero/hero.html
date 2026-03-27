@@ -31,7 +31,7 @@
   </div>
 
   <!-- Floating UI mockup carousel -->
-  <div class="hero-visual reveal">
+  <div class="hero-visual reveal" id="showcase">
     <div class="mockup-scene">
 
         <!-- ① Full Trading Mode -->
@@ -371,19 +371,26 @@
         [style.--f-color]="featureInfoMap[fId].color"
         [style.--f-glow]="featureInfoMap[fId].glow">
         <div class="ff-glow"></div>
-        <div class="ff-inner">
-          <div class="ff-header">
-            <div class="ff-icon">
-              <i class="bi" [class]="featureInfoMap[fId].icon"></i>
-            </div>
-            <span class="ff-badge">{{ t('features.items.' + fId + '.label') }}</span>
+        <div class="ff-flipper">
+          <!-- Back face: big icon -->
+          <div class="ff-back">
+            <i class="bi" [class]="featureInfoMap[fId].icon"></i>
           </div>
-          <h3 class="ff-title">{{ t('features.items.' + fId + '.title') }}</h3>
-          <p class="ff-desc">{{ t('features.items.' + fId + '.description') }}</p>
-          <div class="ff-pills">
-            @for (h of t('features.items.' + fId + '.highlights'); track h) {
-              <span class="ff-pill">{{ h }}</span>
-            }
+          <!-- Front face: content -->
+          <div class="ff-inner">
+            <div class="ff-header">
+              <div class="ff-icon">
+                <i class="bi" [class]="featureInfoMap[fId].icon"></i>
+              </div>
+              <span class="ff-badge">{{ t('features.items.' + fId + '.label') }}</span>
+            </div>
+            <h3 class="ff-title">{{ t('features.items.' + fId + '.title') }}</h3>
+            <p class="ff-desc">{{ t('features.items.' + fId + '.description') }}</p>
+            <div class="ff-pills">
+              @for (h of t('features.items.' + fId + '.highlights'); track h) {
+                <span class="ff-pill">{{ h }}</span>
+              }
+            </div>
           </div>
         </div>
       </div>

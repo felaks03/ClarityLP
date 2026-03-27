@@ -123,6 +123,6 @@ export class HeroComponent implements OnInit, OnDestroy {
   }
 
   goToFeatures() {
-    this.scrollService.navigateAndScroll('/', 'features');
+    this.scrollService.scrollToFragment('showcase');
   }
 }
