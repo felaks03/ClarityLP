@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
+import { provideTransloco } from '@jsverse/transloco';
 import { FeaturesComponent } from './features';
 
 describe('FeaturesComponent', () => {
@@ -10,6 +12,16 @@ describe('FeaturesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FeaturesComponent, NoopAnimationsModule],
+      providers: [
+        provideHttpClient(),
+        provideTransloco({
+          config: {
+            availableLangs: ['en', 'es'],
+            defaultLang: 'en',
+            fallbackLang: 'en',
+          },
+        }),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FeaturesComponent);
@@ -22,72 +34,46 @@ describe('FeaturesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render 8 feature cards', () => {
-    const cards = el.querySelectorAll('.feature-card');
-    expect(cards.length).toBe(8);
+  it('should have 4 features', () => {
+    expect(component.features.length).toBe(4);
   });
 
-  it('should display feature titles', () => {
-    const titles = el.querySelectorAll('.feature-title');
-    expect(titles[0]?.textContent).toBe('Full Trading Mode');
+  it('should have unique feature ids', () => {
+    const ids = component.features.map((f) => f.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it('should display feature descriptions', () => {
-    const descs = el.querySelectorAll('.feature-desc');
-    expect(descs.length).toBe(8);
-    descs.forEach((d) => {
-      expect(d.textContent!.length).toBeGreaterThan(50);
-    });
-  });
-
-  it('should render feature icons', () => {
-    const icons = el.querySelectorAll('.feature-icon i');
-    expect(icons.length).toBe(8);
-  });
-
-  it('should have section header', () => {
-    expect(el.querySelector('.section-title')?.textContent).toContain('listo para usar');
-  });
-
-  it('should toggle feature expansion on click', () => {
-    const firstFeature = component.features[0];
-    expect(firstFeature.expanded).toBe(false);
-    component.toggleFeature(firstFeature);
-    expect(firstFeature.expanded).toBe(true);
-    component.toggleFeature(firstFeature);
-    expect(firstFeature.expanded).toBe(false);
-  });
-
-  it('should not include any admin features', () => {
-    const allText = component.features
-      .map((f) => `${f.title} ${f.description}`)
-      .join(' ')
-      .toLowerCase();
-    expect(allText).not.toContain('admin');
-    expect(allText).not.toContain('impersonación');
-    expect(allText).not.toContain('impersonation');
-  });
-
-  it('should have details with titles for each feature', () => {
+  it('should have detail icons for each feature', () => {
     component.features.forEach((f) => {
-      expect(f.details.length).toBeGreaterThan(0);
-      f.details.forEach((d) => {
-        expect(d.title.length).toBeGreaterThan(0);
-        expect(d.text.length).toBeGreaterThan(30);
-      });
+      expect(f.detailIcons.length).toBeGreaterThan(0);
     });
   });
 
-  it('should have subtitles for each feature', () => {
-    component.features.forEach((f) => {
-      expect(f.subtitle.length).toBeGreaterThan(0);
-    });
+  it('should default to activeIndex 0', () => {
+    expect(component.activeIndex).toBe(0);
   });
 
-  it('should have icon labels explaining each icon', () => {
-    component.features.forEach((f) => {
-      expect(f.iconLabel.length).toBeGreaterThan(0);
-      expect(f.iconLabel.toLowerCase()).toContain('icono');
-    });
+  it('should navigate features with next/prev', () => {
+    component.next();
+    expect(component.activeIndex).toBe(1);
+    component.prev();
+    expect(component.activeIndex).toBe(0);
+  });
+
+  it('should wrap around with next', () => {
+    component.activeIndex = 3;
+    component.next();
+    expect(component.activeIndex).toBe(0);
+  });
+
+  it('should wrap around with prev', () => {
+    component.activeIndex = 0;
+    component.prev();
+    expect(component.activeIndex).toBe(3);
+  });
+
+  it('should select a feature by index', () => {
+    component.select(2);
+    expect(component.activeIndex).toBe(2);
   });
 });

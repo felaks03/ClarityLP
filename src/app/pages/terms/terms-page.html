@@ -1,0 +1,134 @@
+<section class="terms" *transloco="let t">
+  <div class="container">
+    <h1 class="page-title">{{ t('terms.title') }}</h1>
+    <p class="last-updated">{{ t('terms.lastUpdated') }}</p>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s1Title') }}</h2>
+      <p>{{ t('terms.s1Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s2Title') }}</h2>
+      <p>{{ t('terms.s2Text') }}</p>
+      <p class="note">{{ t('terms.s2Note') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s3Title') }}</h2>
+      <p>{{ t('terms.s3Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s4Title') }}</h2>
+      <ul>
+        @for (item of t('terms.s4Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s5Title') }}</h2>
+      <p>{{ t('terms.s5Intro') }}</p>
+      <ul>
+        @for (item of t('terms.s5Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s6Title') }}</h2>
+      <p>{{ t('terms.s6Text') }}</p>
+      <p>{{ t('terms.s6Text2') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s7Title') }}</h2>
+      <p>{{ t('terms.s7Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s8Title') }}</h2>
+      <p>{{ t('terms.s8Intro') }}</p>
+      <ul>
+        @for (item of t('terms.s8Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s9Title') }}</h2>
+      <ul>
+        @for (item of t('terms.s9Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s10Title') }}</h2>
+      <p>{{ t('terms.s10Intro') }}</p>
+      <ul>
+        @for (item of t('terms.s10Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s11Title') }}</h2>
+      <p>{{ t('terms.s11Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s12Title') }}</h2>
+      <ul>
+        @for (item of t('terms.s12Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s13Title') }}</h2>
+      <p>{{ t('terms.s13Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s14Title') }}</h2>
+      <p>{{ t('terms.s14Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s15Title') }}</h2>
+      <p>{{ t('terms.s15Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s16Title') }}</h2>
+      <p>{{ t('terms.s16Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s17Title') }}</h2>
+      <p>{{ t('terms.s17Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s18Title') }}</h2>
+      <p>{{ t('terms.s18Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('terms.s19Title') }}</h2>
+      <p>{{ t('terms.s19Text') }}</p>
+      <p class="contact-email">
+        <strong>Email:</strong>
+        <a href="mailto:{{ t('terms.s19Email') }}">{{ t('terms.s19Email') }}</a>
+      </p>
+    </div>
+  </div>
+</section>

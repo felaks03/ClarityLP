@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { GithubReleaseService, ReleaseInfo } from '../../services/github-release.service';
 
 interface DownloadOption {
@@ -85,7 +86,7 @@ const ASSET_MAP: {
 @Component({
   selector: 'app-downloads',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslocoDirective],
   templateUrl: './downloads.html',
   styleUrl: './downloads.scss',
 })

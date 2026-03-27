@@ -1,0 +1,309 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "roadmap": "Roadmap",
+    "start": "Get Started",
+    "toggleDark": "Switch to light mode",
+    "toggleLight": "Switch to dark mode"
+  },
+  "hero": {
+    "badge": "Built for Focused Traders",
+    "titleLine1": "Your trading,",
+    "titleLine2": "distraction-free.",
+    "subtitle": "Clarity is the desktop browser that blocks distractions, manages your risk, and maximizes your productivity in every trading session.",
+    "btnRoadmap": "View Roadmap",
+    "btnFeatures": "Discover Features"
+  },
+  "features": {
+    "tag": "Features",
+    "title": "Everything you already have",
+    "titleHighlight": "ready to use",
+    "subtitle": "Four pillars designed to transform your trading discipline.",
+    "prev": "Previous",
+    "next": "Next",
+    "featureLabel": "Feature",
+    "items": {
+      "ftm": {
+        "label": "Discipline",
+        "title": "Full Trading Mode",
+        "description": "Lack of discipline? Struggling to follow your rules? Full Trading Mode is designed so you can't break your rules or discipline no matter how much you want to. During your trading session you'll have: risk locked, distractions blocked, external browsers blocked, and much more.",
+        "highlights": ["Risk locked", "Distractions blocked", "Automatic schedule"],
+        "details": [
+          { "title": "Forced fullscreen", "text": "Clarity takes over the entire screen and hides the taskbar and other windows. While the mode is active, it cannot be minimized, resized, or closed." },
+          { "title": "Confined cursor", "text": "The cursor stays within Clarity's boundaries. You can't Alt+Tab, drag windows, or access the taskbar." },
+          { "title": "Scheduled activation", "text": "Set start and end times and the mode activates automatically. Uses server time, not your PC's, so you can't manipulate the clock. With an option to limit it to weekdays." },
+          { "title": "Browser closure", "text": "When activated, Clarity closes Chrome, Firefox, and Edge. No social media or anything running in the background." },
+          { "title": "Training site blocking", "text": "Option to block sites categorized as training during the session. If you're trading, courses and articles can wait." },
+          { "title": "Mandatory checklist", "text": "You can require completing a checklist before opening any execution site. Until you check all items, the broker appears blurred with an overlay that won't let you through." }
+        ]
+      },
+      "risk": {
+        "label": "Discipline",
+        "title": "Risk Blocker",
+        "description": "Set loss and profit limits per trade, day, week, and month. Maximum contracts, trades per session, and much more. Lock the configuration for as long as you want — once locked, you can't change anything until it expires.",
+        "highlights": ["Risk lock", "Contract limit", "API blocking"],
+        "details": [
+          { "title": "Loss and profit limits", "text": "Set maximum loss and maximum profit per trade, per day, per week, and per month. Each field activates or deactivates individually — you only configure what you need." },
+          { "title": "Position control", "text": "Maximum contracts (micros or minis), maximum trades per session, maximum stop-losses and take-profits. Each field with its own toggle." },
+          { "title": "Temporary lock", "text": "Lock your configuration for 1 day, 1 week, or 1 month. Fields are disabled until the time expires. A countdown shows how long is left." },
+          { "title": "Permanent lock", "text": "Limits locked forever. They can only be unlocked by submitting a request that must be reviewed." },
+          { "title": "Individual fields", "text": "Each limit has its own toggle. You activate only the ones that work for you and leave the rest disabled. Changes save automatically." },
+          { "title": "Session lock", "text": "While Full Trading Mode is active, all risk fields are disabled. You can't adjust limits mid-session." }
+        ]
+      },
+      "layouts": {
+        "label": "Organization",
+        "title": "Workspaces & Layouts",
+        "description": "Have all your trading apps in the same workspace, split the screen into panels with horizontal and vertical splits, each one with a different website. Save your favorite layouts.",
+        "highlights": ["Multi-web view", "Custom organization", "Layout saving"],
+        "details": [
+          { "title": "Split panels", "text": "Each panel can be split horizontally or vertically, creating a panel tree. From a simple two-way split to layouts with multiple panels in any arrangement." },
+          { "title": "Drag-to-resize", "text": "Draggable dividers between each pair of panels. Both sides resize proportionally in real time." },
+          { "title": "Multiple workspaces", "text": "Create independent workspaces with their own names: one for analysis with TradingView and screener, another for execution with the broker, another for review. Each with its own layout." },
+          { "title": "Layout templates", "text": "Save any arrangement as a named template. Stores the tree structure, divider proportions, and assigned websites. Applicable to any workspace." },
+          { "title": "Move and reorganize panels", "text": "Movement mode to swap panel positions. Select one, click the destination, and they swap." },
+          { "title": "Auto-save", "text": "Every change saves automatically. If you close Clarity and reopen it, everything is exactly as you left it." }
+        ]
+      },
+      "checklist": {
+        "label": "Accountability",
+        "title": "Trading Checklist",
+        "description": "Customize your strategy to the max. Lists with text, number, select, multi-select, date, time, and checkbox columns. You can have multiple checklists and make completing one mandatory before trading.",
+        "highlights": ["Create your strategy", "Multiple checklists", "Pre-trading lock"],
+        "details": [
+          { "title": "Typed columns", "text": "Each column has its type: text, number, checkbox, select, multi-select, date, or time. Adapt the structure to whatever your strategy needs." },
+          { "title": "Color selection", "text": "Select columns support colored options: green for bullish, red for bearish, yellow for neutral. Readable at a glance." },
+          { "title": "Multiple checklists", "text": "Create as many as you need: one pre-market, another for the trading plan, another post-session. Switch between them from a selector." },
+          { "title": "Pre-trading lock", "text": "If enabled, Clarity blurs execution sites and shows an overlay until you complete all checklist items." },
+          { "title": "Resizable columns", "text": "Drag any column's edge to adjust its width. More space for long text, less for checkboxes." },
+          { "title": "Auto-save", "text": "Every change saves automatically. Unexpected shutdown, power outage — your data is safe." }
+        ]
+      }
+    }
+  },
+  "pricing": {
+    "tag": "Pricing",
+    "title": "How much does it cost?",
+    "titleHighlight": "Absolutely nothing.",
+    "subtitle": "Did you really think we'd charge you? Everything is free. No tricks, no subscriptions, no \"premium plan.\"",
+    "badge": "Only plan",
+    "price": "$0",
+    "priceLabel": "forever",
+    "desc": "All included. No limits. No fine print.",
+    "features": {
+      "ftm": "Full Trading Mode",
+      "risk": "Complete Risk Blocker",
+      "layouts": "Unlimited Workspaces and Layouts",
+      "checklist": "Trading Checklists",
+      "future": "All future features",
+      "updates": "Lifetime updates"
+    },
+    "everything": "EVERYTHING IS FREE"
+  },
+  "downloads": {
+    "tag": "Downloads",
+    "title": "Download Clarity",
+    "titleHighlight": "for your platform.",
+    "subtitle": "Available for Windows, macOS, and Linux. Free, no sign-up, no limits.",
+    "loading": "Loading...",
+    "errorLoad": "Unable to load downloads. Please check your connection.",
+    "errorEmpty": "Downloads array is empty",
+    "errorNone": "No downloads available for your system.",
+    "errorPlatform": "Downloads loaded: {{downloads}}, Platform: {{platform}}, Visible: {{visible}}",
+    "showAll": "Show all downloads",
+    "yourSystem": "Your system",
+    "alternative": "Alternative",
+    "copied": "✓ Copied",
+    "copy": "Copy",
+    "supports": "Supports: Debian/Ubuntu, Fedora/RHEL, Arch, openSUSE and more",
+    "showOther": "View other systems",
+    "showMine": "Show only my system",
+    "updated": "Updated"
+  },
+  "cta": {
+    "titleLine1": "Ready to trade",
+    "titleLine2": "with real discipline?",
+    "subtitle": "Clarity eliminates distractions so you can focus on what matters: executing your plan.",
+    "btnStart": "Get Started",
+    "btnRoadmap": "Explore roadmap"
+  },
+  "riesgos": {
+    "partnersIntro": "Powered by ecosystem partners",
+    "title": "Compliance & Risk Disclosures",
+    "riskTitle": "Risk Disclaimer",
+    "riskText": "Futures and forex trading contains substantial risk and is not for every investor. An investor could potentially lose all or more than the initial investment. Risk capital is money that can be lost without jeopardizing ones' financial security or life style. Only risk capital should be used for trading and only those with sufficient risk capital should consider trading. Past performance is not necessarily indicative of future results.",
+    "hypotheticalTitle": "Hypothetical Performance Disclaimer",
+    "hypotheticalText": "Hypothetical performance results have many inherent limitations, some of which are described below. No representation is being made that any account will or is likely to achieve profits or losses similar to those shown; in fact, there are frequently sharp differences between hypothetical performance results and the actual results subsequently achieved by any particular trading program. One of the limitations of hypothetical performance results is that they are generally prepared with the benefit of hindsight. In addition, hypothetical trading does not involve financial risk, and no hypothetical trading record can completely account for the impact of financial risk of actual trading. For example, the ability to withstand losses or to adhere to a particular trading program in spite of trading losses are material points which can also adversely affect actual trading results. There are numerous other factors related to the markets in general or to the implementation of any specific trading program which cannot be fully accounted for in the preparation of hypothetical performance results and all which can adversely affect trading results.",
+    "testimonialsTitle": "Testimonials Disclaimer",
+    "testimonialsText": "Testimonials appearing on this website may not be representative of other clients or customers and is not a guarantee of future performance or success.",
+    "liveRoomTitle": "Live Trading Room Disclaimer",
+    "liveRoomText": "This presentation is for educational purposes only and the opinions expressed are those of the presenter only. All trades presented should be considered hypothetical and should not be expected to be replicated in a live trading account.",
+    "virtualTitle": "Virtual Currencies Disclaimer",
+    "virtualText": "Please see CFTC advisories as they contain more information about the risks associated with virtual currency trading.",
+    "trademark": "NinjaTrader® is a registered trademark of NinjaTrader Group, LLC. No NinjaTrader company has any affiliation with the owner, developer, or provider of the products or services described herein, or any interest therein, does not sponsor, endorse, recommend, or promote any such product or service."
+  },
+  "footer": {
+    "builtFor": "Built for traders.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: March 27, 2026",
+    "s1Title": "1. Introduction",
+    "s1Text": "Welcome to Clarity. We are committed to protecting your personal information and your right to privacy. This Privacy Policy describes how we collect, use, store, and share your information when you use our desktop application and related services (collectively, the \"Service\"). By using the Service, you agree to the collection and use of information in accordance with this policy.",
+    "s2Title": "2. Information We Collect",
+    "s2_1Title": "2.1 Information You Provide",
+    "s2_1Items": [
+      "Account Information: When you register, we collect your name, email address, and password (stored in hashed form).",
+      "Profile Information: Any additional information you choose to add to your profile.",
+      "Trading Preferences: Your configured risk parameters, alert settings, and workspace configurations.",
+      "Support Communications: Information you provide when contacting our support team."
+    ],
+    "s2_2Title": "2.2 Information Collected Automatically",
+    "s2_2Items": [
+      "Usage Data: Features used, interaction patterns, session duration, and app performance metrics.",
+      "Device Information: Operating system, app version, and hardware identifiers necessary for licensing.",
+      "Log Data: Error logs and diagnostic information to help us improve the Service."
+    ],
+    "s2_3Title": "2.3 Information from Third Parties",
+    "s2_3Items": [
+      "Trading Platform Data: When you connect third-party trading platforms (e.g., NinjaTrader, Tradovate), we may receive account identifiers and trading activity data as necessary to provide our Service. We do not store your third-party platform credentials on our servers."
+    ],
+    "s3Title": "3. How We Use Your Information",
+    "s3Text": "We use the information we collect to:",
+    "s3Items": [
+      "Provide, maintain, and improve the Service.",
+      "Process and manage your account.",
+      "Deliver alerts, notifications, and analytics based on your trading activity.",
+      "Monitor and enforce risk management rules you have configured.",
+      "Communicate with you about updates, security alerts, and support.",
+      "Detect, prevent, and address technical issues and security threats.",
+      "Comply with legal obligations."
+    ],
+    "s4Title": "4. Data Sharing and Disclosure",
+    "s4Text": "We do not sell your personal information. We may share your data only in the following circumstances:",
+    "s4Items": [
+      "Service Providers: With trusted third parties who assist us in operating the Service (e.g., hosting, analytics), bound by confidentiality obligations.",
+      "Legal Requirements: When required to comply with applicable law, regulation, legal process, or governmental request.",
+      "Protection of Rights: To protect the rights, property, or safety of Clarity, our users, or the public.",
+      "Business Transfers: In connection with a merger, acquisition, or sale of assets, with prior notice to you."
+    ],
+    "s5Title": "5. Data Security",
+    "s5Text": "We implement industry-standard security measures to protect your data, including:",
+    "s5Items": [
+      "Encryption of data in transit (TLS/SSL) and at rest.",
+      "Hashed and salted password storage.",
+      "Role-based access controls.",
+      "Regular security audits and vulnerability assessments."
+    ],
+    "s5Note": "No method of transmission over the Internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your information, we cannot guarantee absolute security.",
+    "s6Title": "6. Data Retention",
+    "s6Text": "We retain your personal data for as long as your account is active or as needed to provide you the Service. Upon account deletion, we will remove your personal data within 30 days, except where retention is required by law or for legitimate business purposes (e.g., fraud prevention, dispute resolution).",
+    "s7Title": "7. Your Rights",
+    "s7Text": "Depending on your jurisdiction, you may have the right to:",
+    "s7Items": [
+      "Access the personal data we hold about you.",
+      "Rectify inaccurate or incomplete data.",
+      "Delete your personal data (\"right to be forgotten\").",
+      "Restrict or object to certain processing of your data.",
+      "Data Portability: Receive your data in a structured, machine-readable format.",
+      "Withdraw Consent at any time where processing is based on consent."
+    ],
+    "s7Note": "To exercise any of these rights, please contact us at the address provided below.",
+    "s8Title": "8. Cookies and Local Storage",
+    "s8Text": "The Clarity desktop application may use local storage mechanisms to save your preferences, session tokens, and application state. These are essential for the proper functioning of the Service and cannot be disabled without affecting functionality.",
+    "s9Title": "9. Children's Privacy",
+    "s9Text": "The Service is not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you become aware that a child has provided us with personal data, please contact us and we will take steps to remove that information.",
+    "s10Title": "10. International Data Transfers",
+    "s10Text": "Your information may be transferred to and processed in countries other than your country of residence. We ensure appropriate safeguards are in place to protect your data in accordance with this Privacy Policy and applicable data protection laws.",
+    "s11Title": "11. Changes to This Policy",
+    "s11Text": "We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the updated policy within the Service and updating the \"Last updated\" date. Your continued use of the Service after any changes constitutes acceptance of the updated policy.",
+    "s12Title": "12. Contact Us",
+    "s12Text": "If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:",
+    "s12Email": "support@getclaritybrowser.com",
+    "effective": "This Privacy Policy is effective as of the date stated above and applies to all users of the Clarity application and related services."
+  },
+  "terms": {
+    "title": "Terms and Conditions",
+    "lastUpdated": "Last updated: March 27, 2026",
+    "s1Title": "1. Acceptance of Terms",
+    "s1Text": "By downloading, installing, or using the Clarity application and related services (collectively, the \"Service\"), you agree to be bound by these Terms and Conditions (\"Terms\"). If you do not agree to these Terms, do not use the Service.",
+    "s2Title": "2. Description of Service",
+    "s2Text": "Clarity is a desktop trading analytics and risk management application. The Service provides tools including, but not limited to, trade journaling, performance analytics, risk parameter configuration, alerts, and integration with third-party trading platforms.",
+    "s2Note": "Clarity does not execute trades, provide financial advice, or act as a broker or financial intermediary.",
+    "s3Title": "3. Eligibility",
+    "s3Text": "You must be at least 18 years of age and have the legal capacity to enter into these Terms. By using the Service, you represent and warrant that you meet these requirements.",
+    "s4Title": "4. Account Registration",
+    "s4Items": [
+      "You must provide accurate, complete, and current information during registration.",
+      "You are responsible for maintaining the confidentiality of your account credentials.",
+      "You are responsible for all activities that occur under your account.",
+      "You must notify us immediately of any unauthorized use of your account."
+    ],
+    "s5Title": "5. Acceptable Use",
+    "s5Intro": "You agree not to:",
+    "s5Items": [
+      "Use the Service for any unlawful purpose or in violation of any applicable regulations.",
+      "Attempt to reverse-engineer, decompile, or disassemble the Service.",
+      "Interfere with or disrupt the integrity or performance of the Service.",
+      "Attempt to gain unauthorized access to the Service or its related systems.",
+      "Use automated tools to scrape, crawl, or extract data from the Service.",
+      "Redistribute, sublicense, or resell the Service without prior written consent.",
+      "Share your account credentials with third parties."
+    ],
+    "s6Title": "6. Intellectual Property",
+    "s6Text": "All content, features, and functionality of the Service — including but not limited to source code, design, text, graphics, logos, and trademarks — are the exclusive property of Clarity and are protected by intellectual property laws.",
+    "s6Text2": "You are granted a limited, non-exclusive, non-transferable, revocable license to use the Service for its intended purpose, subject to these Terms.",
+    "s7Title": "7. Third-Party Integrations",
+    "s7Text": "The Service may integrate with third-party trading platforms and services (e.g., NinjaTrader, Tradovate). Your use of these third-party services is governed by their respective terms and conditions. Clarity is not responsible for the availability, accuracy, or reliability of third-party services.",
+    "s8Title": "8. Trading Risk Acknowledgment",
+    "s8Intro": "By using the Service, you acknowledge and agree that:",
+    "s8Items": [
+      "Trading futures, forex, and other financial instruments involves substantial risk of loss and is not suitable for all investors.",
+      "Clarity provides tools for analysis and risk management only; it does not guarantee profits or prevent losses.",
+      "All trading decisions are made solely by you. Clarity bears no responsibility for any trading losses.",
+      "Past performance shown within the Service is not indicative of future results.",
+      "Hypothetical or simulated performance results have inherent limitations and should not be relied upon as a prediction of actual results."
+    ],
+    "s9Title": "9. Subscription and Payments",
+    "s9Items": [
+      "Certain features of the Service may require a paid subscription.",
+      "Pricing, billing cycles, and payment terms will be communicated at the time of purchase.",
+      "All fees are non-refundable except as expressly stated or required by applicable law.",
+      "We reserve the right to modify pricing with reasonable advance notice."
+    ],
+    "s10Title": "10. Limitation of Liability",
+    "s10Intro": "To the maximum extent permitted by applicable law:",
+    "s10Items": [
+      "The Service is provided \"AS IS\" and \"AS AVAILABLE\" without warranties of any kind, either express or implied.",
+      "Clarity shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to your use of the Service.",
+      "Clarity's total liability for any claim arising from the Service shall not exceed the amount you paid to us in the twelve (12) months preceding the claim.",
+      "Clarity is not responsible for any losses resulting from trading decisions, system outages, or third-party service failures."
+    ],
+    "s11Title": "11. Indemnification",
+    "s11Text": "You agree to indemnify, defend, and hold harmless Clarity and its officers, directors, employees, and agents from any claims, damages, losses, liabilities, and expenses (including legal fees) arising out of or related to your use of the Service or violation of these Terms.",
+    "s12Title": "12. Termination",
+    "s12Items": [
+      "You may terminate your account at any time by contacting us or using the account settings.",
+      "We may suspend or terminate your access to the Service at any time, with or without cause, with or without notice.",
+      "Upon termination, your right to use the Service ceases immediately. Provisions that by their nature should survive termination will remain in effect."
+    ],
+    "s13Title": "13. Modifications to the Service",
+    "s13Text": "We reserve the right to modify, suspend, or discontinue the Service (or any part thereof) at any time, with or without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuation of the Service.",
+    "s14Title": "14. Changes to These Terms",
+    "s14Text": "We may revise these Terms at any time. Material changes will be communicated through the Service or via email. Your continued use of the Service after changes are posted constitutes acceptance of the revised Terms.",
+    "s15Title": "15. Governing Law",
+    "s15Text": "These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which Clarity operates, without regard to its conflict of law provisions.",
+    "s16Title": "16. Dispute Resolution",
+    "s16Text": "Any disputes arising from or relating to these Terms or the Service shall be resolved through binding arbitration in accordance with applicable arbitration rules, unless otherwise required by local law. You waive any right to participate in a class action lawsuit or class-wide arbitration.",
+    "s17Title": "17. Severability",
+    "s17Text": "If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.",
+    "s18Title": "18. Entire Agreement",
+    "s18Text": "These Terms, together with the Privacy Policy, constitute the entire agreement between you and Clarity regarding the use of the Service and supersede all prior agreements.",
+    "s19Title": "19. Contact Us",
+    "s19Text": "If you have any questions about these Terms, please contact us at:",
+    "s19Email": "support@getclaritybrowser.com"
+  }
+}

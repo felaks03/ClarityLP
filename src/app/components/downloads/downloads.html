@@ -1,10 +1,10 @@
-<section class="downloads" id="downloads">
+<section class="downloads" id="downloads" *transloco="let t">
   <div class="container reveal">
     <div class="section-header">
-      <span class="section-tag">Downloads</span>
-      <h2 class="section-title">Descarga Clarity<br><span class="gradient-text">para tu plataforma.</span></h2>
+      <span class="section-tag">{{ t('downloads.tag') }}</span>
+      <h2 class="section-title">{{ t('downloads.title') }}<br><span class="gradient-text">{{ t('downloads.titleHighlight') }}</span></h2>
       <p class="section-subtitle">
-        Disponible para Windows, macOS y Linux. Gratis, sin registro, sin límites.
+        {{ t('downloads.subtitle') }}
       </p>
     </div>
 
@@ -16,18 +16,18 @@
       }
       @if (!loading && downloads.length === 0) {
         <div class="downloads-error">
-          <p>Unable to load downloads. Please check your connection.</p>
-          <p style="font-size: 0.75rem; margin-top: 8px; opacity: 0.6;">Downloads array is empty</p>
+          <p>{{ t('downloads.errorLoad') }}</p>
+          <p style="font-size: 0.75rem; margin-top: 8px; opacity: 0.6;">{{ t('downloads.errorEmpty') }}</p>
         </div>
       }
       @if (!loading && downloads.length > 0 && visibleDownloads.length === 0) {
         <div class="downloads-error">
-          <p>No downloads available for your system.</p>
+          <p>{{ t('downloads.errorNone') }}</p>
           <p style="font-size: 0.75rem; margin-top: 8px; opacity: 0.6;">
-            Downloads loaded: {{ downloads.length }}, Platform: {{ detectedPlatform || 'Not detected' }}, Visible: {{ visibleDownloads.length }}
+            Downloads: {{ downloads.length }}, Platform: {{ detectedPlatform || 'N/A' }}, Visible: {{ visibleDownloads.length }}
           </p>
           <button (click)="toggleShowAll()" style="margin-top: 12px; padding: 8px 16px; background: var(--accent); color: white; border: none; border-radius: 6px; cursor: pointer;">
-            Show all downloads
+            {{ t('downloads.showAll') }}
           </button>
         </div>
       }
@@ -38,19 +38,19 @@
             <div class="card-header">
               <i class="bi" [ngClass]="dl.icon"></i>
               @if (isDetected(dl.platform) && dl.primary) {
-                <span class="detected-badge">Tu sistema</span>
+                <span class="detected-badge">{{ t('downloads.yourSystem') }}</span>
               }
               @if (!dl.primary) {
-                <span class="alt-badge">Alternativa</span>
+                <span class="alt-badge">{{ t('downloads.alternative') }}</span>
               }
             </div>
             <h3 class="card-title">{{ dl.label }}</h3>
             @if (dl.fileName === 'install.sh') {
               <div class="terminal-box-inline" (click)="copyInstallCmd()">
                 <code>curl -fsSL getclaritybrowser.com/install.sh | bash</code>
-                <span class="copy-hint">{{ copied ? '✓ Copiado' : 'Copiar' }}</span>
+                <span class="copy-hint">{{ copied ? t('downloads.copied') : t('downloads.copy') }}</span>
               </div>
-              <p class="card-note-inline">Soporta: Debian/Ubuntu, Fedora/RHEL, Arch, openSUSE y más</p>
+              <p class="card-note-inline">{{ t('downloads.supports') }}</p>
             } @else {
               <p class="card-file">{{ dl.fileName }}</p>
               <p class="card-size">{{ dl.size }}</p>
@@ -68,14 +68,14 @@
     <div class="downloads-footer">
       <button class="toggle-platforms" (click)="toggleShowAll()" [attr.aria-expanded]="showAll">
         <i class="bi" [ngClass]="showAll ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
-        {{ showAll ? 'Mostrar solo mi sistema' : 'Ver otros sistemas' }}
+        {{ showAll ? t('downloads.showMine') : t('downloads.showOther') }}
       </button>
 
       @if (version) {
         <div class="version-info">
           <span>v{{ version }}</span>
           <span class="separator">·</span>
-          <span>Actualizado {{ lastUpdated }}</span>
+          <span>{{ t('downloads.updated') }} {{ lastUpdated }}</span>
         </div>
       }
     </div>

@@ -1,0 +1,113 @@
+<section class="privacy" *transloco="let t">
+  <div class="container">
+    <h1 class="page-title">{{ t('privacy.title') }}</h1>
+    <p class="last-updated">{{ t('privacy.lastUpdated') }}</p>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s1Title') }}</h2>
+      <p>{{ t('privacy.s1Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s2Title') }}</h2>
+
+      <h3>{{ t('privacy.s2_1Title') }}</h3>
+      <ul>
+        @for (item of t('privacy.s2_1Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+
+      <h3>{{ t('privacy.s2_2Title') }}</h3>
+      <ul>
+        @for (item of t('privacy.s2_2Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+
+      <h3>{{ t('privacy.s2_3Title') }}</h3>
+      <ul>
+        @for (item of t('privacy.s2_3Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s3Title') }}</h2>
+      <p>{{ t('privacy.s3Text') }}</p>
+      <ul>
+        @for (item of t('privacy.s3Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s4Title') }}</h2>
+      <p>{{ t('privacy.s4Text') }}</p>
+      <ul>
+        @for (item of t('privacy.s4Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s5Title') }}</h2>
+      <p>{{ t('privacy.s5Text') }}</p>
+      <ul>
+        @for (item of t('privacy.s5Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+      <p class="note">{{ t('privacy.s5Note') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s6Title') }}</h2>
+      <p>{{ t('privacy.s6Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s7Title') }}</h2>
+      <p>{{ t('privacy.s7Text') }}</p>
+      <ul>
+        @for (item of t('privacy.s7Items'); track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+      <p class="note">{{ t('privacy.s7Note') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s8Title') }}</h2>
+      <p>{{ t('privacy.s8Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s9Title') }}</h2>
+      <p>{{ t('privacy.s9Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s10Title') }}</h2>
+      <p>{{ t('privacy.s10Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s11Title') }}</h2>
+      <p>{{ t('privacy.s11Text') }}</p>
+    </div>
+
+    <div class="section-block">
+      <h2>{{ t('privacy.s12Title') }}</h2>
+      <p>{{ t('privacy.s12Text') }}</p>
+      <p class="email-link"><a href="mailto:privacy@claritytrading.app">{{ t('privacy.s12Email') }}</a></p>
+    </div>
+
+    <div class="section-block effective">
+      <p>{{ t('privacy.effective') }}</p>
+    </div>
+  </div>
+</section>

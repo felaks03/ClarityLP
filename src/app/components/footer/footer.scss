@@ -43,6 +43,12 @@
 }
 
 // ─── Compliance Link ───
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .compliance-link {
   font-size: 0.72rem;
   color: var(--text-dim);

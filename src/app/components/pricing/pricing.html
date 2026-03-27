@@ -1,33 +1,33 @@
-<section class="pricing" id="pricing">
+<section class="pricing" id="pricing" *transloco="let t">
   <div class="container reveal">
     <div class="section-header">
-      <span class="section-tag">Pricing</span>
-      <h2 class="section-title">¿Cuánto cuesta?<br><span class="gradient-text">Absolutamente nada.</span></h2>
+      <span class="section-tag">{{ t('pricing.tag') }}</span>
+      <h2 class="section-title">{{ t('pricing.title') }}<br><span class="gradient-text">{{ t('pricing.titleHighlight') }}</span></h2>
       <p class="section-subtitle">
-        ¿De verdad pensabas que te íbamos a cobrar? Todo es gratis. Sin trucos, sin suscripciones, sin "plan premium".
+        {{ t('pricing.subtitle') }}
       </p>
     </div>
 
     <div class="pricing-card">
       <div class="card-glow"></div>
       <div class="card-inner">
-        <div class="plan-badge">Único plan</div>
+        <div class="plan-badge">{{ t('pricing.badge') }}</div>
         <div class="price-row">
-          <span class="price">$0</span>
-          <span class="price-label">para siempre</span>
+          <span class="price">{{ t('pricing.price') }}</span>
+          <span class="price-label">{{ t('pricing.priceLabel') }}</span>
         </div>
-        <p class="plan-desc">Todo incluido. Sin límites. Sin letra pequeña.</p>
+        <p class="plan-desc">{{ t('pricing.desc') }}</p>
 
         <ul class="features-list">
-          <li><i class="bi bi-check-lg"></i>Full Trading Mode</li>
-          <li><i class="bi bi-check-lg"></i>Risk Blocker completo</li>
-          <li><i class="bi bi-check-lg"></i>Workspaces y Layouts ilimitados</li>
-          <li><i class="bi bi-check-lg"></i>Trading Checklists</li>
-          <li><i class="bi bi-check-lg"></i>Todas las features futuras</li>
-          <li><i class="bi bi-check-lg"></i>Actualizaciones de por vida</li>
+          <li><i class="bi bi-check-lg"></i>{{ t('pricing.features.ftm') }}</li>
+          <li><i class="bi bi-check-lg"></i>{{ t('pricing.features.risk') }}</li>
+          <li><i class="bi bi-check-lg"></i>{{ t('pricing.features.layouts') }}</li>
+          <li><i class="bi bi-check-lg"></i>{{ t('pricing.features.checklist') }}</li>
+          <li><i class="bi bi-check-lg"></i>{{ t('pricing.features.future') }}</li>
+          <li><i class="bi bi-check-lg"></i>{{ t('pricing.features.updates') }}</li>
         </ul>
 
-        <div class="everything">EVERYTHING IS FREE</div>
+        <div class="everything">{{ t('pricing.everything') }}</div>
       </div>
     </div>
   </div>

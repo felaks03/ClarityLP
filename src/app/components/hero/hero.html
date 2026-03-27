@@ -1,4 +1,4 @@
-<section class="hero">
+<section class="hero" *transloco="let t">
   <!-- Background glow orb -->
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
@@ -6,26 +6,25 @@
   <div class="hero-content">
     <div class="badge reveal">
       <i class="bi bi-lightning-charge-fill"></i>
-      <span>Built for Focused Traders</span>
+      <span>{{ t('hero.badge') }}</span>
     </div>
 
     <h1 class="hero-title reveal">
-      Tu trading,<br>
-      <span class="gradient-text">sin distracciones.</span>
+      {{ t('hero.titleLine1') }}<br>
+      <span class="gradient-text">{{ t('hero.titleLine2') }}</span>
     </h1>
 
     <p class="hero-subtitle reveal">
-      Clarity es el navegador de escritorio que bloquea las distracciones,
-      gestiona tu riesgo y maximiza tu productividad en cada sesión de trading.
+      {{ t('hero.subtitle') }}
     </p>
 
     <div class="hero-actions reveal">
       <button (click)="goToRoadmap()" class="btn-primary">
         <i class="bi bi-map"></i>
-        Ver Roadmap
+        {{ t('hero.btnRoadmap') }}
       </button>
       <button (click)="goToFeatures()" class="btn-secondary">
-        <span>Descubrir Features</span>
+        <span>{{ t('hero.btnFeatures') }}</span>
         <i class="bi bi-arrow-right"></i>
       </button>
     </div>
