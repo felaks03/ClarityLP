@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Clarity Landing Page - Development Server
 # Este script instala dependencias e inicia el servidor de desarrollo
 

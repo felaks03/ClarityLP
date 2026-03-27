@@ -8,61 +8,34 @@
       </p>
     </div>
 
-    <!-- ─── 3D Carousel ─── -->
-    <div class="carousel reveal">
-      <div class="carousel-scene">
-        @for (f of features; track f.id; let i = $index) {
-          <div
-            class="carousel-card"
-            [class.is-active]="offset(i) === 0"
-            [style.--f-color]="f.color"
-            [style.--f-glow]="f.glow"
-            [style.transform]="cardTransform(i)"
-            [style.opacity]="cardOpacity(i)"
-            [style.z-index]="cardZIndex(i)"
-            [style.pointer-events]="absOffset(i) <= 1 ? 'auto' : 'none'"
-            [style.filter]="offset(i) !== 0 ? 'brightness(0.55) saturate(0.6)' : 'none'"
-            (click)="select(i)"
-          >
-            <div class="card-glow"></div>
-            <div class="card-inner">
-              <div class="card-icon-area">
-                <div class="card-icon">
-                  <i class="bi" [class]="f.icon"></i>
-                </div>
-                <div class="card-icon-ring"></div>
-              </div>
-              <span class="card-badge">{{ t('features.items.' + f.id + '.label') }}</span>
-              <h3 class="card-title">{{ t('features.items.' + f.id + '.title') }}</h3>
-              <p class="card-desc">{{ t('features.items.' + f.id + '.description') }}</p>
-              <div class="card-pills">
-                @for (h of t('features.items.' + f.id + '.highlights'); track h) {
-                  <span class="pill">{{ h }}</span>
-                }
-              </div>
+    <!-- ─── Features Grid ─── -->
+    <div class="features-grid reveal">
+      @for (f of features; track f.id; let i = $index) {
+        <div
+          class="feature-tile"
+          [style.--f-color]="f.color"
+          [style.--f-glow]="f.glow"
+          [class.is-active]="activeIndex === i"
+          (click)="select(i)"
+        >
+          <div class="tile-glow"></div>
+          <div class="tile-inner">
+            <div class="tile-icon">
+              <i class="bi" [class]="f.icon"></i>
+            </div>
+            <div class="tile-text">
+              <span class="tile-label">{{ t('features.items.' + f.id + '.label') }}</span>
+              <h3 class="tile-title">{{ t('features.items.' + f.id + '.title') }}</h3>
+              <p class="tile-desc">{{ t('features.items.' + f.id + '.description') }}</p>
+            </div>
+            <div class="tile-pills">
+              @for (h of t('features.items.' + f.id + '.highlights'); track h) {
+                <span class="tile-pill">{{ h }}</span>
+              }
             </div>
           </div>
-        }
-
-        <button class="carousel-arrow arrow-prev" (click)="prev(); $event.stopPropagation()" [attr.aria-label]="t('features.prev')">
-          <i class="bi bi-chevron-left"></i>
-        </button>
-        <button class="carousel-arrow arrow-next" (click)="next(); $event.stopPropagation()" [attr.aria-label]="t('features.next')">
-          <i class="bi bi-chevron-right"></i>
-        </button>
-      </div>
-
-      <div class="carousel-dots">
-        @for (f of features; track f.id; let i = $index) {
-          <button
-            class="dot"
-            [class.active]="activeIndex === i"
-            [style.--f-color]="f.color"
-            (click)="select(i)"
-            [attr.aria-label]="t('features.featureLabel') + ' ' + (i + 1)"
-          ></button>
-        }
-      </div>
+        </div>
+      }
     </div>
   </div>
 </section>
