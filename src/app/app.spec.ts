@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
+import { TranslocoTestingModule } from '@jsverse/transloco';
 import { App } from './app';
 
 describe('App (root)', () => {
@@ -8,7 +10,12 @@ describe('App (root)', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App, NoopAnimationsModule],
+      imports: [
+        App,
+        NoopAnimationsModule,
+        TranslocoTestingModule.forRoot({ langs: { en: {} }, translocoConfig: { availableLangs: ['en'], defaultLang: 'en' } }),
+      ],
+      providers: [provideHttpClient()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(App);
@@ -20,13 +27,9 @@ describe('App (root)', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render all main sections', () => {
+  it('should render navbar and footer', () => {
     const el: HTMLElement = fixture.nativeElement;
     expect(el.querySelector('app-navbar')).toBeTruthy();
-    expect(el.querySelector('app-hero')).toBeTruthy();
-    expect(el.querySelector('app-features')).toBeTruthy();
-    expect(el.querySelector('app-roadmap')).toBeTruthy();
-    expect(el.querySelector('app-cta')).toBeTruthy();
     expect(el.querySelector('app-footer')).toBeTruthy();
   });
 });

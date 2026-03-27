@@ -1,10 +1,10 @@
-<section class="features" id="features">
+<section class="features" id="features" *transloco="let t">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-tag">Funcionalidades</span>
-      <h2 class="section-title">Todo lo que ya tienes<br><span class="gradient-text">listo para usar</span></h2>
+      <span class="section-tag">{{ t('features.tag') }}</span>
+      <h2 class="section-title">{{ t('features.title') }}<br><span class="gradient-text">{{ t('features.titleHighlight') }}</span></h2>
       <p class="section-subtitle">
-        Cuatro pilares diseñados para transformar tu disciplina de trading.
+        {{ t('features.subtitle') }}
       </p>
     </div>
 
@@ -32,11 +32,11 @@
                 </div>
                 <div class="card-icon-ring"></div>
               </div>
-              <span class="card-badge">{{ f.label }}</span>
-              <h3 class="card-title">{{ f.title }}</h3>
-              <p class="card-desc">{{ f.description }}</p>
+              <span class="card-badge">{{ t('features.items.' + f.id + '.label') }}</span>
+              <h3 class="card-title">{{ t('features.items.' + f.id + '.title') }}</h3>
+              <p class="card-desc">{{ t('features.items.' + f.id + '.description') }}</p>
               <div class="card-pills">
-                @for (h of f.highlights; track h) {
+                @for (h of t('features.items.' + f.id + '.highlights'); track h) {
                   <span class="pill">{{ h }}</span>
                 }
               </div>
@@ -44,10 +44,10 @@
           </div>
         }
 
-        <button class="carousel-arrow arrow-prev" (click)="prev(); $event.stopPropagation()" aria-label="Anterior">
+        <button class="carousel-arrow arrow-prev" (click)="prev(); $event.stopPropagation()" [attr.aria-label]="t('features.prev')">
           <i class="bi bi-chevron-left"></i>
         </button>
-        <button class="carousel-arrow arrow-next" (click)="next(); $event.stopPropagation()" aria-label="Siguiente">
+        <button class="carousel-arrow arrow-next" (click)="next(); $event.stopPropagation()" [attr.aria-label]="t('features.next')">
           <i class="bi bi-chevron-right"></i>
         </button>
       </div>
@@ -59,7 +59,7 @@
             [class.active]="activeIndex === i"
             [style.--f-color]="f.color"
             (click)="select(i)"
-            [attr.aria-label]="'Feature ' + (i + 1)"
+            [attr.aria-label]="t('features.featureLabel') + ' ' + (i + 1)"
           ></button>
         }
       </div>

@@ -1,16 +1,16 @@
-<section class="cta" id="cta">
+<section class="cta" id="cta" *transloco="let t">
   <div class="cta-glow"></div>
   <div class="container reveal">
     <div class="cta-card">
       <div class="cta-content">
-        <h2 class="cta-title">Listo para operar<br><span class="gradient-text">con disciplina real?</span></h2>
-        <p class="cta-subtitle">Clarity elimina las distracciones para que tú te centres en lo que importa: ejecutar tu plan.</p>
+        <h2 class="cta-title">{{ t('cta.titleLine1') }}<br><span class="gradient-text">{{ t('cta.titleLine2') }}</span></h2>
+        <p class="cta-subtitle">{{ t('cta.subtitle') }}</p>
         <div class="cta-actions">
           <button (click)="goToDownloads()" class="btn-primary">
-            Empezar
+            {{ t('cta.btnStart') }}
           </button>
           <button (click)="goToRoadmap()" class="btn-ghost">
-            Explorar roadmap
+            {{ t('cta.btnRoadmap') }}
             <i class="bi bi-arrow-right"></i>
           </button>
         </div>

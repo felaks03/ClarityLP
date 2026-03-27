@@ -3,6 +3,7 @@ import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar';
 import { FooterComponent } from './components/footer/footer';
 import { ScrollService } from './services/scroll.service';
+import { LanguageService } from './services/language.service';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -17,7 +18,13 @@ import { filter } from 'rxjs/operators';
   styleUrl: './app.scss',
 })
 export class App implements OnInit {
-  constructor(private router: Router, private scrollService: ScrollService) {}
+  constructor(
+    private router: Router,
+    private scrollService: ScrollService,
+    private languageService: LanguageService,
+  ) {
+    this.languageService.init();
+  }
 
   ngOnInit() {
     this.router.events

@@ -1,4 +1,4 @@
-<nav class="navbar" [class.scrolled]="scrolled">
+<nav class="navbar" [class.scrolled]="scrolled" *transloco="let t">
   <div class="navbar-inner">
     <div class="logo-container">
       <a routerLink="/" class="logo">
@@ -8,14 +8,21 @@
     </div>
 
     <div class="nav-links" [class.open]="mobileMenuOpen">
-      <button (click)="goToFeatures()" class="nav-link">Features</button>
-      <button (click)="goToPricing()" class="nav-link">Pricing</button>
-      <a routerLink="/roadmap" class="nav-link" (click)="closeMobileMenu()">Roadmap</a>
-      <button class="theme-toggle-btn" (click)="toggleTheme()" [attr.aria-label]="theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'">
+      <button (click)="goToFeatures()" class="nav-link">{{ t('nav.features') }}</button>
+      <button (click)="goToPricing()" class="nav-link">{{ t('nav.pricing') }}</button>
+      <a routerLink="/roadmap" class="nav-link" (click)="closeMobileMenu()">{{ t('nav.roadmap') }}</a>
+      <button class="theme-toggle-btn" (click)="toggleTheme()" [attr.aria-label]="theme === 'dark' ? t('nav.toggleDark') : t('nav.toggleLight')">
         <i class="bi" [class.bi-moon-fill]="theme === 'dark'" [class.bi-sun-fill]="theme === 'light'"></i>
       </button>
+      <div class="lang-select-wrapper">
+        <select class="lang-select" [value]="lang.activeLang" (change)="lang.setLang($any($event.target).value)">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+        <i class="bi bi-chevron-down lang-select-chevron"></i>
+      </div>
       <button (click)="goToDownloads()" class="nav-btn download-btn">
-        Empezar
+        {{ t('nav.start') }}
       </button>
     </div>
 

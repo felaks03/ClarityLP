@@ -1,19 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { GithubReleaseService } from '../../services/github-release.service';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
+  imports: [RouterLink, TranslocoDirective],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })
 export class FooterComponent implements OnInit {
   private releaseService = inject(GithubReleaseService);
-
-  scrollToRiesgos(event: Event) {
-    event.preventDefault();
-    document.getElementById('riesgos')?.scrollIntoView({ behavior: 'smooth' });
-  }
 
   year = new Date().getFullYear();
   version = '';

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { ScrollService } from '../../services/scroll.service';
 
 @Component({
   selector: 'app-cta',
   standalone: true,
+  imports: [TranslocoDirective],
   templateUrl: './cta.html',
   styleUrl: './cta.scss',
 })

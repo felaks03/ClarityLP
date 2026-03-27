@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
-  selector: 'app-riesgos',
+  selector: 'app-terms',
   standalone: true,
   imports: [TranslocoDirective],
-  templateUrl: './riesgos-page.html',
-  styleUrl: './riesgos-page.scss',
+  templateUrl: './terms-page.html',
+  styleUrl: './terms-page.scss',
 })
-export class RiesgosPage {}
+export class TermsPage {}

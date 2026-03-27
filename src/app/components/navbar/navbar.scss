@@ -28,7 +28,7 @@
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .logo {
@@ -47,30 +47,31 @@
 }
 
 .logo-img {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 7px;
 }
 
 .beta-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 2px 8px;
+  padding: 2px 9px;
   background: linear-gradient(135deg, #ff6b6b, #ff8787);
   color: white;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  border-radius: 4px;
+  letter-spacing: 0.6px;
+  border-radius: 999px;
   text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.35);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .nav-link {
@@ -132,21 +133,70 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text-muted);
   cursor: pointer;
   transition: all var(--transition-base);
-  font-size: 1rem;
+  font-size: 0.95rem;
+  margin-left: 4px;
 
   &:hover {
     color: var(--text-primary);
     border-color: var(--border-light);
     background: var(--bg-hover);
   }
+}
+
+.lang-select-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-select {
+  height: 34px;
+  padding: 0 30px 0 11px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: color var(--transition-base), border-color var(--transition-base), background-color var(--transition-base);
+
+  &:hover {
+    color: var(--text-primary);
+    border-color: var(--border-light);
+    background-color: var(--bg-hover);
+
+    ~ .lang-select-chevron {
+      color: var(--text-primary);
+    }
+  }
+
+  option {
+    background: #0a0f1e;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+}
+
+.lang-select-chevron {
+  position: absolute;
+  right: 9px;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: color var(--transition-base);
 }
 
 .mobile-toggle {

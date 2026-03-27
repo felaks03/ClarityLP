@@ -1,13 +1,15 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { ScrollService } from '../../services/scroll.service';
+import { LanguageService } from '../../services/language.service';
 
 type Theme = 'dark' | 'light';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, TranslocoDirective],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })
@@ -16,7 +18,10 @@ export class NavbarComponent {
   mobileMenuOpen = false;
   theme: Theme = 'dark';
 
-  constructor(private scrollService: ScrollService) {
+  constructor(
+    private scrollService: ScrollService,
+    public lang: LanguageService,
+  ) {
     const stored = localStorage.getItem('clarity-theme');
     this.theme = stored === 'light' ? 'light' : 'dark';
     this.applyTheme(this.theme);

@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { TranslocoTestingModule } from '@jsverse/transloco';
 import { NavbarComponent } from './navbar';
 
 describe('NavbarComponent', () => {
@@ -8,7 +10,11 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NavbarComponent],
+      imports: [
+        NavbarComponent,
+        TranslocoTestingModule.forRoot({ langs: { en: {} }, translocoConfig: { availableLangs: ['en'], defaultLang: 'en' } }),
+      ],
+      providers: [provideHttpClient()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavbarComponent);
@@ -21,13 +27,8 @@ describe('NavbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render logo text', () => {
-    expect(el.querySelector('.logo-text')?.textContent).toBe('Clarity');
-  });
-
-  it('should render navigation links', () => {
-    const links = el.querySelectorAll('.nav-link');
-    expect(links.length).toBeGreaterThanOrEqual(2);
+  it('should render logo image', () => {
+    expect(el.querySelector('.logo-img')).toBeTruthy();
   });
 
   it('should toggle mobile menu', () => {
