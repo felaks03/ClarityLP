@@ -31,7 +31,8 @@
   </div>
 
   <!-- Floating UI mockup carousel -->
-  <div class="hero-visual reveal" id="showcase">
+  <div class="hero-visual reveal" id="showcase" #showcaseRef
+    [class.showcase-visible]="showcaseVisible">
     <div class="mockup-scene">
 
         <!-- ① Full Trading Mode -->
@@ -367,7 +368,7 @@
     <!-- Floating feature cards -->
     @for (fId of mockupFeatureIds; track fId; let i = $index) {
       <div class="floating-feature"
-        [class.ff-active]="activeMockup === i"
+        [class.ff-active]="activeMockup === i && showcaseVisible"
         [style.--f-color]="featureInfoMap[fId].color"
         [style.--f-glow]="featureInfoMap[fId].glow">
         <div class="ff-glow"></div>

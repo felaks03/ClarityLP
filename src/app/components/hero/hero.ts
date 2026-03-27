@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { Subscription } from 'rxjs';
 import { ScrollService } from '../../services/scroll.service';
@@ -18,11 +18,15 @@ interface FeatureInfo {
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
 })
-export class HeroComponent implements OnInit, OnDestroy {
+export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
   activeMockup = 0;
   readonly mockupCount = 4;
-  // Ordered to match the 4 mockup slides; used for sync and i18n labels
   readonly mockupFeatureIds = ['ftm', 'layouts', 'checklist', 'risk'];
+
+  showcaseVisible = false;
+
+  @ViewChild('showcaseRef') showcaseRef!: ElementRef<HTMLElement>;
+  private observer!: IntersectionObserver;
 
   readonly featureInfoMap: Record<string, FeatureInfo> = {
     ftm: { id: 'ftm', icon: 'bi-fullscreen', color: '#3b82f6', glow: 'rgba(59,130,246,0.25)' },
@@ -47,9 +51,23 @@ export class HeroComponent implements OnInit, OnDestroy {
     this.startAutoPlay();
   }
 
+  ngAfterViewInit(): void {
+    this.observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting && !this.showcaseVisible) {
+          this.showcaseVisible = true;
+          this.observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    this.observer.observe(this.showcaseRef.nativeElement);
+  }
+
   ngOnDestroy(): void {
     this.syncSub.unsubscribe();
     this.stopAutoPlay();
+    if (this.observer) this.observer.disconnect();
   }
 
   private startAutoPlay(): void {

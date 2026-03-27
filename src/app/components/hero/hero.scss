@@ -977,21 +977,21 @@
 // ═══════════════════════════════════════════════════
 .floating-feature {
   position: absolute;
-  bottom: 70px;
-  right: -30px;
-  width: 370px;
+  bottom: 20px;
+  right: -80px;
+  width: 430px;
   z-index: 30;
   opacity: 0;
   pointer-events: none;
-  transform: rotate(3.5deg) translateY(32px);
+  transform: translateY(32px);
   transition:
-    opacity 450ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 500ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 1300ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1500ms cubic-bezier(0.32, 0.72, 0, 1);
   perspective: 1200px;
 
   &.ff-active {
     opacity: 1;
-    transform: rotate(3.5deg) translateY(0);
+    transform: translateY(0);
     pointer-events: auto;
   }
 }
@@ -1003,21 +1003,32 @@
   filter: blur(40px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 600ms ease;
+  transition: opacity 1800ms ease;
 
   .ff-active & {
     opacity: 1;
   }
 }
 
-// 3D flip wrapper
+// 3D flip wrapper — only animates once showcase is in view
 .ff-flipper {
   position: relative;
   transform-style: preserve-3d;
-  transform: rotateY(180deg); // starts showing back
-  transition: transform 700ms cubic-bezier(0.32, 0.72, 0, 1) 80ms;
+  transform: rotateY(180deg);
+  // no transition by default — added via .showcase-visible on hero-visual
 
   .ff-active & {
+    transform: rotateY(180deg); // stays on back until showcase visible
+  }
+}
+
+// Once the showcase section is in view, enable the flip
+.hero-visual.showcase-visible {
+  .ff-flipper {
+    transition: transform 2000ms cubic-bezier(0.32, 0.72, 0, 1) 300ms;
+  }
+
+  .floating-feature.ff-active .ff-flipper {
     transform: rotateY(0deg);
   }
 }
@@ -1030,9 +1041,7 @@
   -webkit-backface-visibility: hidden;
   transform: rotateY(180deg);
   border-radius: 18px;
-  background: color-mix(in srgb, var(--bg-secondary) 82%, transparent);
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  background: var(--bg-secondary);
   border: 1px solid color-mix(in srgb, var(--f-color) 22%, var(--border));
   box-shadow:
     0 16px 48px rgba(0, 0, 0, 0.22),
@@ -1042,12 +1051,11 @@
   justify-content: center;
   overflow: hidden;
 
-  // subtle background glow behind icon
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, color-mix(in srgb, var(--f-color) 12%, transparent) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, color-mix(in srgb, var(--f-color) 14%, transparent) 0%, transparent 65%);
   }
 
   i {
@@ -1055,7 +1063,7 @@
     z-index: 1;
     font-size: 7rem;
     color: var(--f-color);
-    opacity: 0.35;
+    opacity: 0.45;
     filter: blur(0.5px);
   }
 }
@@ -1066,10 +1074,9 @@
   z-index: 1;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  padding: 24px 22px 20px;
-  background: color-mix(in srgb, var(--bg-secondary) 82%, transparent);
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  padding: 28px 26px 28px;
+  min-height: 260px;
+  background: var(--bg-secondary);
   border: 1px solid color-mix(in srgb, var(--f-color) 22%, var(--border));
   border-radius: 18px;
   box-shadow:
@@ -1131,10 +1138,6 @@
   color: var(--text-muted);
   line-height: 1.7;
   margin-bottom: 14px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .ff-pills {
@@ -1249,6 +1252,5 @@
 
   .ff-desc {
     font-size: 0.74rem;
-    -webkit-line-clamp: 2;
   }
 }
