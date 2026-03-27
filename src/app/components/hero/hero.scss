@@ -984,16 +984,15 @@
   z-index: 30;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(32px);
-  transition:
-    opacity 1300ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 1500ms cubic-bezier(0.4, 0, 0.2, 1);
+  // Exit: instant
+  transition: opacity 80ms linear;
   perspective: 1200px;
 
   &.ff-active {
     opacity: 1;
-    transform: translateY(0);
     pointer-events: auto;
+    // Entrance: fade in
+    transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -1004,10 +1003,11 @@
   filter: blur(40px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 1800ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 80ms linear;
 
   .ff-active & {
     opacity: 1;
+    transition: opacity 1800ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
