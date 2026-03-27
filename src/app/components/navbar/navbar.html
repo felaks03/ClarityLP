@@ -14,10 +14,13 @@
       <button class="theme-toggle-btn" (click)="toggleTheme()" [attr.aria-label]="theme === 'dark' ? t('nav.toggleDark') : t('nav.toggleLight')">
         <i class="bi" [class.bi-moon-fill]="theme === 'dark'" [class.bi-sun-fill]="theme === 'light'"></i>
       </button>
-      <select class="lang-select" [value]="lang.activeLang" (change)="lang.setLang($any($event.target).value)">
-        <option value="en">English</option>
-        <option value="es">Español</option>
-      </select>
+      <div class="lang-select-wrapper">
+        <select class="lang-select" [value]="lang.activeLang" (change)="lang.setLang($any($event.target).value)">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+        <i class="bi bi-chevron-down lang-select-chevron"></i>
+      </div>
       <button (click)="goToDownloads()" class="nav-btn download-btn">
         {{ t('nav.start') }}
       </button>
