@@ -3,7 +3,7 @@
 # Usage: curl -fsSL https://getclaritybrowser.com/install.sh | bash
 set -euo pipefail
 
-VERSION="0.3.12"
+VERSION="0.3.13"
 BASE_URL="https://github.com/felaks03/ClarityLP/releases/download/v${VERSION}"
 TMP_DIR="$(mktemp -d)"
 
